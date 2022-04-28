@@ -13,9 +13,9 @@ namespace SalesCalcuulater
         private List<Sale> _sales;//csvファイルから読み込んだデータ
 
         //コンストラクタ
-        public SalesCounter(List<Sale> sales)
+        public SalesCounter(String filePath)
         {
-            _sales = sales;
+            _sales = ReadSales(filePath);
         }
 
         //店舗別売り上げを求める
@@ -35,7 +35,6 @@ namespace SalesCalcuulater
         //売り上げデータを読み込み、Saleオブジェクトのリストを返す
         public static List<Sale> ReadSales(string filePath)
         {
-
             List<Sale> sales = new List<Sale>();
             string[] lines = File.ReadAllLines(filePath);
 
