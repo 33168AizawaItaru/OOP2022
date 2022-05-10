@@ -10,7 +10,7 @@ namespace SalesCalcuulater
     public class Sale
     {
         //店舗名
-        public string ShopName { get; set; }//プロパティ　（自動実装プロパティ）
+        public string ShopName { get; set; }//プロパティ（自動実装プロパティ）
 
         //商品カテゴリー
         public string ProductCategory { get; set; }

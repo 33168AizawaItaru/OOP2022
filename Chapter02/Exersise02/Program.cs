@@ -4,16 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exercise
+namespace Exersise02
 {
     class Program
     {
         static void Main(string[] args)
         {
-            for (int i = 0; i < 10; i++)
-            {
-
-            }
         }
     }
 }
