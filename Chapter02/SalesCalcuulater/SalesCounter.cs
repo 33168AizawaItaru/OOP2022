@@ -43,9 +43,7 @@ namespace SalesCalcuulater
                 string[] items = line.Split(',');
                 Sale sale = new Sale
                 {
-                    ShopName = items[0],
-                    ProductCategory = items[1],
-                    Amount = int.Parse(items[2])
+                    
                 };
                 sales.Add(sale);
             }
