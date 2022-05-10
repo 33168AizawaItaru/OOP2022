@@ -10,8 +10,29 @@ namespace Exercise
     {
         static void Main(string[] args)
         {
-            for (int i = 0; i < 10; i++)
+
+            
+
+            var songs = new Song[]
             {
+                new Song("Let it be","The Batles",243),
+                new Song("Bridge Over Troubled Water","Simon & Garhunkel",293),
+                new Song("Close To You","Carpenters",276),
+                new Song("Honesty","Billy Joel",231),
+                new Song("I Will Always Love You","Wnitney Houston",273),
+            };
+            
+            
+            PrintSongs(songs);
+        }
+
+        private static void PrintSongs(Song[] songs) 
+        {
+            foreach (var song in songs)
+            {
+                Console.WriteLine("{0},{1},{2:m\\:ss}",
+                    song.Title,song.ArtistName,TimeSpan.FromSeconds(song.Length));
+
 
             }
         }
