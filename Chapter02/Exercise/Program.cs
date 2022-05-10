@@ -10,11 +10,10 @@ namespace Exercise
     {
         static void Main(string[] args)
         {
-            var songs = new List<Song>();
+            for (int i = 0; i < 10; i++)
+            {
 
-            Song song = new Song("隣のとろろ","服部マン",5);
-
-            
+            }
         }
     }
 }

@@ -18,11 +18,6 @@ namespace Exercise
         public int Length { get; set; }
 
         //コンストラクタ
-        public Song(string title, string artistname, int length) 
-        {
-            Title = title;
-            ArtistName = artistname;
-            Length = length;
-        }
+        public Song(string title, string artistname, int length) { }
     }
 }
