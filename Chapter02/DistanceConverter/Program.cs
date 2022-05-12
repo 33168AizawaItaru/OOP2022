@@ -14,7 +14,7 @@ namespace DistanceConverter {
                 //フィートからメートルへの対応表を出力
                 PrintFeetToMeterList(1,10);
             }
-            else
+            else if(args.Length >= 1 && args[0] == "-toi")
             {
                 //メートルからフィートへの対応表を出力
                 PrintMaterToFeetList(1,10);
@@ -38,7 +38,7 @@ namespace DistanceConverter {
             for (int meter = start; meter <= stop; meter++)
             {
                 double feet = FeetConverter.FromMeter(meter);
-                Console.WriteLine("{0} m = {1:0.0000} ft", meter, feet);
+                Console.WriteLine("{0} m = {1:0.0000} in", meter, feet);
             }
         }
 

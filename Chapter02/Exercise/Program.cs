@@ -10,9 +10,6 @@ namespace Exercise
     {
         static void Main(string[] args)
         {
-
-            
-
             var songs = new Song[]
             {
                 new Song("Let it be","The Batles",243),
@@ -21,19 +18,15 @@ namespace Exercise
                 new Song("Honesty","Billy Joel",231),
                 new Song("I Will Always Love You","Wnitney Houston",273),
             };
-            
-            
             PrintSongs(songs);
         }
 
-        private static void PrintSongs(Song[] songs) 
+        private static void PrintSongs(IEnumerable<Song> songs) 
         {
             foreach (var song in songs)
             {
                 Console.WriteLine("{0},{1},{2:m\\:ss}",
                     song.Title,song.ArtistName,TimeSpan.FromSeconds(song.Length));
-
-
             }
         }
     }
