@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exersise02
+namespace Exercise02
 {
     class InchConverter
     {
@@ -15,6 +15,11 @@ namespace Exersise02
         public static double ToMeter(double inch)
         {
             return inch * ratio;
+        }
+        //メートルからフィートを求める(静的メソッド)
+        public static double FromMeter(int meter)
+        {
+            return meter / ratio;
         }
     }
 }
