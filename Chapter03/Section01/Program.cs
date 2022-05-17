@@ -12,20 +12,13 @@ namespace Section01
 
         static void Main(string[] args)
         {
-            var list = new List<string> {
+            var list = new List<string> 
+            {
                "Tokyo", "New Delhi", "Bangkok", "London", "Paris", "Berlin", "Canberra", "Hong Kong",
             };
 
-            var names = list.FindAll(s => s.Length <= 6);
-
-            names.ForEach(s => Console.WriteLine(s));
-
-            /*   ↑でも可
-             *  foreach (var s in names)
-             *  {
-             *      Console.WriteLine(names);
-             *  }
-            */
+            var lowerList = list.ConvertAll(s => s.ToLower());
+            lowerList.ForEach(s => Console.WriteLine(s));
         }
     }
 }
