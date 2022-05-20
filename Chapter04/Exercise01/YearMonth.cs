@@ -27,8 +27,19 @@ namespace Exercise01
             {
                 return 2001 <= Year  && Year <= 2100;
             }
+        }
 
-            
+        public YearMonth AddOneMonth()
+        {
+            if (Month == 12)
+            {
+                return new YearMonth(this.Year+1,1);
+            }
+            else
+            {
+                return new YearMonth(this.Year,this.Month+1);
+            }
+
         }
     }
 }
