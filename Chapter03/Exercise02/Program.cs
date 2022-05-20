@@ -53,7 +53,7 @@ namespace Exercise02
 
         private static void Exercise2_3(List<string> names)
         {
-            var charcter = names.Where(s=> s.Contains("o"));
+            var charcter = names.Where(s=> s.Contains("o")).ToArray();//配列に変換して抽出
 
             foreach (var s in charcter)
             {
@@ -63,7 +63,14 @@ namespace Exercise02
 
         private static void Exercise2_4(List<string> names)
         {
-            var numChar = names.Where(s => s == "B").Select(s=>s);
+            var selected = names.Where(s => s.StartsWith("B")).Select(s=>new { s.Length,s});
+            
+
+            foreach (var name in selected)
+            {
+                Console.WriteLine(name.Length+name.s);
+            }
+
         }
     }
 }
