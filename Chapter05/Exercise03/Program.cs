@@ -58,17 +58,16 @@ namespace Exercise03
 
         private static void Exercise3_5(string text)
         {
-            String[] word = text.Split(' ');
+            var word = text.Split(' ').ToArray();
             var sb = new StringBuilder();
 
             foreach (var words in word)
             {
                 sb.Append(words+' ');
-
-                
             }
-            Console.WriteLine(sb);
+            var str = sb.ToString().TrimEnd();
 
+            Console.WriteLine(str);
         }
     }
 }
