@@ -17,7 +17,7 @@ namespace Exercise02
                 Console.WriteLine("{0:N}",strInt);
             } else
             {
-                Console.WriteLine("できてない…");
+                Console.WriteLine("できない...");
             }
         }
     }

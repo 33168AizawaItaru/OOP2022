@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercise01
 {
-    class YearMonth
+    public class YearMonth
     {
         //年プロパティ
         public int Year { get; private set; }
