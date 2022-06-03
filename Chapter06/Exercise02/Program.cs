@@ -98,12 +98,17 @@ namespace Exercise02
 
         private static void Exercise2_8(List<Book> books)
         {
-            int count = 1;
+            /*int count = 1;
 
             foreach (var book in books)
             {
                 Console.WriteLine(count + "冊目：{0}", book.Title);
                 count++;
+            }*/
+
+            foreach (var book in books.Select((b,i) => new {i,b.Title}))
+            {
+                Console.WriteLine((book.i+1) + "冊目:" + book.Title) ;
             }
         }
 
