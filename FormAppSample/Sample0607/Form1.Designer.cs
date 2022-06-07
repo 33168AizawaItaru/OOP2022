@@ -29,193 +29,90 @@ namespace Sample0607
         /// </summary>
         private void InitializeComponent()
         {
-            this.tbNum1 = new System.Windows.Forms.TextBox();
-            this.tbNum2 = new System.Windows.Forms.TextBox();
-            this.tbAns = new System.Windows.Forms.TextBox();
+            this.tbRamdom = new System.Windows.Forms.Button();
+            this.number = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbMod = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.nudNum1 = new System.Windows.Forms.NumericUpDown();
-            this.nudNum2 = new System.Windows.Forms.NumericUpDown();
-            this.nudAns = new System.Windows.Forms.NumericUpDown();
-            this.nudMod = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.nudNum1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudNum2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAns)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudMod)).BeginInit();
+            this.numMin = new System.Windows.Forms.NumericUpDown();
+            this.numMax = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.number)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMax)).BeginInit();
             this.SuspendLayout();
             // 
-            // tbNum1
+            // tbRamdom
             // 
-            this.tbNum1.Font = new System.Drawing.Font("ＭＳ 明朝", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbNum1.Location = new System.Drawing.Point(42, 90);
-            this.tbNum1.Name = "tbNum1";
-            this.tbNum1.Size = new System.Drawing.Size(100, 31);
-            this.tbNum1.TabIndex = 0;
+            this.tbRamdom.BackColor = System.Drawing.SystemColors.Window;
+            this.tbRamdom.Font = new System.Drawing.Font("ＭＳ 明朝", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tbRamdom.Location = new System.Drawing.Point(404, 394);
+            this.tbRamdom.Name = "tbRamdom";
+            this.tbRamdom.Size = new System.Drawing.Size(374, 117);
+            this.tbRamdom.TabIndex = 0;
+            this.tbRamdom.Text = "乱数取得";
+            this.tbRamdom.UseVisualStyleBackColor = false;
+            this.tbRamdom.Click += new System.EventHandler(this.tbRamdom_Click);
             // 
-            // tbNum2
+            // number
             // 
-            this.tbNum2.Font = new System.Drawing.Font("ＭＳ 明朝", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbNum2.Location = new System.Drawing.Point(212, 90);
-            this.tbNum2.Name = "tbNum2";
-            this.tbNum2.Size = new System.Drawing.Size(100, 31);
-            this.tbNum2.TabIndex = 0;
-            // 
-            // tbAns
-            // 
-            this.tbAns.Font = new System.Drawing.Font("ＭＳ 明朝", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbAns.Location = new System.Drawing.Point(400, 90);
-            this.tbAns.Name = "tbAns";
-            this.tbAns.Size = new System.Drawing.Size(152, 31);
-            this.tbAns.TabIndex = 0;
+            this.number.Font = new System.Drawing.Font("ＭＳ 明朝", 50.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.number.Location = new System.Drawing.Point(91, 416);
+            this.number.Name = "number";
+            this.number.Size = new System.Drawing.Size(211, 74);
+            this.number.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("ＭＳ 明朝", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(179, 395);
+            this.label1.Font = new System.Drawing.Font("ＭＳ 明朝", 50.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label1.Location = new System.Drawing.Point(69, 185);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 24);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "÷";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Size = new System.Drawing.Size(233, 67);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "最大値";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("ＭＳ 明朝", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(338, 93);
+            this.label2.Font = new System.Drawing.Font("ＭＳ 明朝", 50.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label2.Location = new System.Drawing.Point(69, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 24);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "＝";
+            this.label2.Size = new System.Drawing.Size(233, 67);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "最小値";
             // 
-            // label3
+            // numMin
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("ＭＳ 明朝", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label3.Location = new System.Drawing.Point(594, 105);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 16);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "あまり";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.numMin.Font = new System.Drawing.Font("ＭＳ 明朝", 50.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.numMin.Location = new System.Drawing.Point(404, 56);
+            this.numMin.Name = "numMin";
+            this.numMin.Size = new System.Drawing.Size(336, 74);
+            this.numMin.TabIndex = 1;
             // 
-            // tbMod
+            // numMax
             // 
-            this.tbMod.Font = new System.Drawing.Font("ＭＳ 明朝", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbMod.Location = new System.Drawing.Point(667, 90);
-            this.tbMod.Name = "tbMod";
-            this.tbMod.Size = new System.Drawing.Size(113, 31);
-            this.tbMod.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("ＭＳ 明朝", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Location = new System.Drawing.Point(304, 208);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(161, 79);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "計算";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // nudNum1
-            // 
-            this.nudNum1.Font = new System.Drawing.Font("ＭＳ 明朝", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.nudNum1.Location = new System.Drawing.Point(42, 388);
-            this.nudNum1.Name = "nudNum1";
-            this.nudNum1.Size = new System.Drawing.Size(120, 31);
-            this.nudNum1.TabIndex = 3;
-            // 
-            // nudNum2
-            // 
-            this.nudNum2.Font = new System.Drawing.Font("ＭＳ 明朝", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.nudNum2.Location = new System.Drawing.Point(233, 388);
-            this.nudNum2.Name = "nudNum2";
-            this.nudNum2.Size = new System.Drawing.Size(120, 31);
-            this.nudNum2.TabIndex = 3;
-            // 
-            // nudAns
-            // 
-            this.nudAns.Font = new System.Drawing.Font("ＭＳ 明朝", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.nudAns.Location = new System.Drawing.Point(453, 388);
-            this.nudAns.Name = "nudAns";
-            this.nudAns.Size = new System.Drawing.Size(120, 31);
-            this.nudAns.TabIndex = 3;
-            // 
-            // nudMod
-            // 
-            this.nudMod.Font = new System.Drawing.Font("ＭＳ 明朝", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.nudMod.Location = new System.Drawing.Point(667, 388);
-            this.nudMod.Name = "nudMod";
-            this.nudMod.Size = new System.Drawing.Size(120, 31);
-            this.nudMod.TabIndex = 3;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("ＭＳ 明朝", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(380, 395);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 24);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "＝";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("ＭＳ 明朝", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label5.Location = new System.Drawing.Point(161, 93);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 24);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "÷";
-            this.label5.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("ＭＳ 明朝", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label6.Location = new System.Drawing.Point(605, 402);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 16);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "あまり";
-            this.label6.Click += new System.EventHandler(this.label3_Click);
+            this.numMax.Font = new System.Drawing.Font("ＭＳ 明朝", 50.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.numMax.Location = new System.Drawing.Point(404, 183);
+            this.numMax.Name = "numMax";
+            this.numMax.Size = new System.Drawing.Size(336, 74);
+            this.numMax.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackColor = System.Drawing.Color.Aquamarine;
             this.ClientSize = new System.Drawing.Size(823, 572);
-            this.Controls.Add(this.nudMod);
-            this.Controls.Add(this.nudAns);
-            this.Controls.Add(this.nudNum2);
-            this.Controls.Add(this.nudNum1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tbMod);
-            this.Controls.Add(this.tbAns);
-            this.Controls.Add(this.tbNum2);
-            this.Controls.Add(this.tbNum1);
+            this.Controls.Add(this.numMax);
+            this.Controls.Add(this.numMin);
+            this.Controls.Add(this.number);
+            this.Controls.Add(this.tbRamdom);
             this.Name = "Form1";
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.nudNum1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudNum2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAns)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudMod)).EndInit();
+            this.Text = "乱数アプリ";
+            ((System.ComponentModel.ISupportInitialize)(this.number)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMax)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,21 +120,12 @@ namespace Sample0607
 
         #endregion
 
-        private System.Windows.Forms.TextBox tbNum1;
-        private System.Windows.Forms.TextBox tbNum2;
-        private System.Windows.Forms.TextBox tbAns;
+        private System.Windows.Forms.Button tbRamdom;
+        private System.Windows.Forms.NumericUpDown number;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbMod;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.NumericUpDown nudNum1;
-        private System.Windows.Forms.NumericUpDown nudNum2;
-        private System.Windows.Forms.NumericUpDown nudAns;
-        private System.Windows.Forms.NumericUpDown nudMod;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown numMin;
+        private System.Windows.Forms.NumericUpDown numMax;
     }
 }
 

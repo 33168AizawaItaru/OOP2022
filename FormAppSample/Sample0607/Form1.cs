@@ -12,26 +12,16 @@ namespace Sample0607
 {
     public partial class Form1 : Form
     {
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void tbRamdom_Click(object sender, EventArgs e)
         {
-            if (nudNum2.Text == 0.ToString())
-            {
-                MessageBox.Show("計算できません","errore",MessageBoxButtons.AbortRetryIgnore,MessageBoxIcon.Hand);
-            } else
-            {
-                nudAns.Text = (int.Parse(nudNum1.Text) / int.Parse(nudNum2.Text)).ToString();
-                nudMod.Text = (int.Parse(nudNum1.Text) % int.Parse(nudNum2.Text)).ToString();
-            }
+            var rand = new Random();
+            number.Value = rand.Next(minValue:(int)numMin.Value,maxValue:(int)numMax.Value+1);
         }
-
-        
-        private void label3_Click(object sender, EventArgs e){}
-        private void label1_Click(object sender, EventArgs e){}
-        
     }
 }
