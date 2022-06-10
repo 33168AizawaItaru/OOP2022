@@ -28,6 +28,5 @@ namespace AddressBook
             仕事,
             その他
         }
-
     }
 }
