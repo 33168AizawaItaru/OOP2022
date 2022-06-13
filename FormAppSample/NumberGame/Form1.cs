@@ -34,7 +34,7 @@ namespace NumberGame
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            numRand = rand.Next(minValue: 1, maxValue: 51);
+            getRandom();
         }
 
         public void numericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -43,7 +43,7 @@ namespace NumberGame
         }
 
         private void getRandom() {
-            numRand = rand.Next(minValue: 1, maxValue: 51);
+            numRand = rand.Next(1,(int)maxValue.Value);
         }
 
         private void label1_Click(object sender, EventArgs e){}
