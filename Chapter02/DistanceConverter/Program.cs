@@ -41,7 +41,5 @@ namespace DistanceConverter {
                 Console.WriteLine("{0} m = {1:0.0000} in", meter, feet);
             }
         }
-
-        
     }
 }
