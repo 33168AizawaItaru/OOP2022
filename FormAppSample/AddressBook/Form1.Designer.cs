@@ -63,7 +63,6 @@ namespace AddressBook
             this.label1.Size = new System.Drawing.Size(70, 27);
             this.label1.TabIndex = 0;
             this.label1.Text = "名前";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -74,7 +73,6 @@ namespace AddressBook
             this.label2.Size = new System.Drawing.Size(215, 27);
             this.label2.TabIndex = 0;
             this.label2.Text = "メールアドレス";
-            this.label2.Click += new System.EventHandler(this.label1_Click);
             // 
             // label3
             // 
@@ -85,7 +83,6 @@ namespace AddressBook
             this.label3.Size = new System.Drawing.Size(70, 27);
             this.label3.TabIndex = 0;
             this.label3.Text = "住所";
-            this.label3.Click += new System.EventHandler(this.label1_Click);
             // 
             // label4
             // 
@@ -96,7 +93,6 @@ namespace AddressBook
             this.label4.Size = new System.Drawing.Size(70, 27);
             this.label4.TabIndex = 0;
             this.label4.Text = "会社";
-            this.label4.Click += new System.EventHandler(this.label1_Click);
             // 
             // label5
             // 
@@ -107,11 +103,11 @@ namespace AddressBook
             this.label5.Size = new System.Drawing.Size(128, 27);
             this.label5.TabIndex = 0;
             this.label5.Text = "グループ";
-            this.label5.Click += new System.EventHandler(this.label1_Click);
             // 
             // dgvPersons
             // 
             this.dgvPersons.AllowUserToAddRows = false;
+            this.dgvPersons.AllowUserToDeleteRows = false;
             this.dgvPersons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersons.Location = new System.Drawing.Point(30, 411);
             this.dgvPersons.MultiSelect = false;

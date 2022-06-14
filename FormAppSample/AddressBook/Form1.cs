@@ -42,6 +42,8 @@ namespace AddressBook
                 listGroup = GetCheckBoxGroup()
             };
             listPerson.Add(newPerson);
+
+            Check();
         }
 
         //チェックボックスにセットされている値をリストとして取り出す
@@ -110,7 +112,6 @@ namespace AddressBook
                     default:
                     break;
                 }
-
             }
         }
 
@@ -128,32 +129,60 @@ namespace AddressBook
         //更新ボタンが押された時の処理
         private void btUpdate_Click(object sender, EventArgs e)
         {
-            if (dgvPersons.CurrentRow == null) return;
 
-            listPerson[dgvPersons.CurrentRow.Index].Name = tbName.Text;
-            listPerson[dgvPersons.CurrentRow.Index].MailAddress = tbMailAddress.Text;
-            listPerson[dgvPersons.CurrentRow.Index].Address = tbAddress.Text;
-            listPerson[dgvPersons.CurrentRow.Index].Company = tbCompany.Text;
-            listPerson[dgvPersons.CurrentRow.Index].Picture = pbPicture.Image;
-            listPerson[dgvPersons.CurrentRow.Index].listGroup = GetCheckBoxGroup();
+            if (dgvPersons.CurrentRow == null) return;
+            var getIndex = dgvPersons.CurrentRow.Index;
+
+            listPerson[getIndex].Name = tbName.Text;
+            listPerson[getIndex].MailAddress = tbMailAddress.Text;
+            listPerson[getIndex].Address = tbAddress.Text;
+            listPerson[getIndex].Company = tbCompany.Text;
+            listPerson[getIndex].Picture = pbPicture.Image;
+            listPerson[getIndex].listGroup = GetCheckBoxGroup();
             dgvPersons.Refresh();//データグリッドビュー更新
             
         }
 
         private void btDeleat_Click(object sender, EventArgs e)
         {
+            if (dgvPersons.CurrentRow == null) return;
             listPerson.RemoveAt(dgvPersons.CurrentRow.Index);
+
+            if (listPerson.Count == 0)
+            {
+                btDeleat.Enabled = false;
+                btUpdate.Enabled = false;
+            }
+        }
+
+        private void Check()
+        {
+            if (listPerson.Count >= 1)
+            {
+                if (listPerson == null)
+                {
+                    btDeleat.Enabled = false;
+                    btUpdate.Enabled = false;
+                } else
+                {
+                    btDeleat.Enabled = true;
+                    btUpdate.Enabled = true;
+                }
+            } else
+            {
+                btDeleat.Enabled = false;
+                btUpdate.Enabled = false;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            btDeleat.Enabled = false;
-            btAddPerson.Enabled = true;
+            btDeleat.Enabled = false;//削除ボタンをマスク
+            btUpdate.Enabled = false;//更新ボタン
         }
 
         private void btPictureClear_Click(object sender, EventArgs e){pbPicture.Image = null;}
 
-        private void label1_Click(object sender, EventArgs e){}
         private void textBox3_TextChanged(object sender, EventArgs e){}
         private void dgvPersons_CellContentClick(object sender, DataGridViewCellEventArgs e){}
 
