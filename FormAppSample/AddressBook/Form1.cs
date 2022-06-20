@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -51,10 +53,19 @@ namespace AddressBook
 
             Check();
 
-            //コンボボックスに会社名を登録する
+            setCbCompany(cbCompany.Text);
+
+
+        }
+
+        //コンボボックスに会社名を登録する
+        private void setCbCompany(string company)
+        {
+            
             if (!cbCompany.Items.Contains(cbCompany.Text))
             {
-                cbCompany.Items.Add(cbCompany.Text);
+                //登録されていなければ登録処理
+                cbCompany.Items.Add(company);
             }
 
             /*　↑の変化球
@@ -199,11 +210,57 @@ namespace AddressBook
             btUpdate.Enabled = false;//更新ボタン
         }
 
-        private void btPictureClear_Click(object sender, EventArgs e)
+
+        //保存ボタンのイベントハンドラ
+        private void btSave_Click(object sender, EventArgs e)
         {
-            pbPicture.Image = null;
+            if (sfdSaveDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    //バイナリ形式でシリアル化
+                    var bf = new BinaryFormatter();
+                    using (FileStream fs = File.Open(sfdSaveDialog.FileName,FileMode.Create))
+                    {
+                        bf.Serialize(fs,listPerson);
+                    }
+                } catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
 
+        private void btOpen_Click(object sender, EventArgs e)
+        {
+            if (ofdFileOpenDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    //バイナリ形式で逆シリアル化
+                    var bf = new BinaryFormatter();
+                    using (FileStream fs = File.Open(ofdFileOpenDialog.FileName, FileMode.Open,FileAccess.Read))
+                    {
+                        //逆シリアル化して読み込む
+                        listPerson = (BindingList<Person>)bf.Deserialize(fs);
+                        dgvPersons.DataSource = null;
+                        dgvPersons.DataSource = listPerson;
+                    }
+                } catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+
+                }
+
+                foreach (var item in listPerson)
+                {
+                    setCbCompany(item.Company);//存在する会社を登録
+                }
+            }
+        }
+
+
+        private void btPictureClear_Click(object sender, EventArgs e){pbPicture.Image = null;}
         private void textBox3_TextChanged(object sender, EventArgs e) { }
         private void dgvPersons_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
     }
