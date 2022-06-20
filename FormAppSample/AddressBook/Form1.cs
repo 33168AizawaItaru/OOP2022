@@ -31,19 +31,38 @@ namespace AddressBook
 
         private void btAddPerson_Click(object sender, EventArgs e)
         {
+            //氏名が未入力なら登録しない
+            if (string.IsNullOrWhiteSpace(tbName.Text))
+            {
+                MessageBox.Show("氏名が入力されていません");
+                return;
+            }
 
             Person newPerson = new Person
             {
                 Name = tbName.Text,
                 MailAddress = tbMailAddress.Text,
                 Address = tbAddress.Text,
-                Company = tbCompany.Text,
+                Company = cbCompany.Text,
                 Picture = pbPicture.Image,
                 listGroup = GetCheckBoxGroup()
             };
             listPerson.Add(newPerson);
 
             Check();
+
+            //コンボボックスに会社名を登録する
+            if (!cbCompany.Items.Contains(cbCompany.Text))
+            {
+                cbCompany.Items.Add(cbCompany.Text);
+            }
+
+            /*　↑の変化球
+            if (cbCompany.Text != "" && cbCompany.Items.IndexOf(cbCompany.Text) == -1)
+            {
+                cbCompany.Items.Add(cbCompany.Text);
+            }
+            */
         }
 
         //チェックボックスにセットされている値をリストとして取り出す
@@ -84,7 +103,7 @@ namespace AddressBook
             tbName.Text = listPerson[getIndex].Name;
             tbMailAddress.Text = listPerson[getIndex].MailAddress;
             tbAddress.Text = listPerson[getIndex].Address;
-            tbCompany.Text = listPerson[getIndex].Company;
+            cbCompany.Text = listPerson[getIndex].Company;
             pbPicture.Image = listPerson[getIndex].Picture;
 
             groupCheckBoxAllClear();
@@ -136,11 +155,10 @@ namespace AddressBook
             listPerson[getIndex].Name = tbName.Text;
             listPerson[getIndex].MailAddress = tbMailAddress.Text;
             listPerson[getIndex].Address = tbAddress.Text;
-            listPerson[getIndex].Company = tbCompany.Text;
+            listPerson[getIndex].Company = cbCompany.Text;
             listPerson[getIndex].Picture = pbPicture.Image;
             listPerson[getIndex].listGroup = GetCheckBoxGroup();
             dgvPersons.Refresh();//データグリッドビュー更新
-            
         }
 
         private void btDeleat_Click(object sender, EventArgs e)
@@ -159,14 +177,14 @@ namespace AddressBook
         {
             if (listPerson.Count >= 1)
             {
-                if (listPerson == null)
-                {
-                    btDeleat.Enabled = false;
-                    btUpdate.Enabled = false;
-                } else
+                if (listPerson != null)
                 {
                     btDeleat.Enabled = true;
                     btUpdate.Enabled = true;
+                } else
+                {
+                    btDeleat.Enabled = false;
+                    btUpdate.Enabled = false;
                 }
             } else
             {
@@ -181,11 +199,12 @@ namespace AddressBook
             btUpdate.Enabled = false;//更新ボタン
         }
 
-        private void btPictureClear_Click(object sender, EventArgs e){pbPicture.Image = null;}
+        private void btPictureClear_Click(object sender, EventArgs e)
+        {
+            pbPicture.Image = null;
+        }
 
-        private void textBox3_TextChanged(object sender, EventArgs e){}
-        private void dgvPersons_CellContentClick(object sender, DataGridViewCellEventArgs e){}
-
-
+        private void textBox3_TextChanged(object sender, EventArgs e) { }
+        private void dgvPersons_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
     }
 }
