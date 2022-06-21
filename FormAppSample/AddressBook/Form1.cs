@@ -51,29 +51,20 @@ namespace AddressBook
             };
             listPerson.Add(newPerson);
 
-            Check();
+            EnabledCheck();
 
             setCbCompany(cbCompany.Text);
-
-
         }
 
         //コンボボックスに会社名を登録する
         private void setCbCompany(string company)
         {
-            
-            if (!cbCompany.Items.Contains(cbCompany.Text))
+
+            if (!cbCompany.Items.Contains(company))
             {
                 //登録されていなければ登録処理
                 cbCompany.Items.Add(company);
             }
-
-            /*　↑の変化球
-            if (cbCompany.Text != "" && cbCompany.Items.IndexOf(cbCompany.Text) == -1)
-            {
-                cbCompany.Items.Add(cbCompany.Text);
-            }
-            */
         }
 
         //チェックボックスにセットされている値をリストとして取り出す
@@ -177,37 +168,33 @@ namespace AddressBook
             if (dgvPersons.CurrentRow == null) return;
             listPerson.RemoveAt(dgvPersons.CurrentRow.Index);
 
-            if (listPerson.Count == 0)
-            {
-                btDeleat.Enabled = false;
-                btUpdate.Enabled = false;
-            }
+            EnabledCheck();
+
         }
 
-        private void Check()
+        //更新・削除ボタンのマスクを行う（マスク判定含む）
+        private void EnabledCheck()
         {
-            if (listPerson.Count >= 1)
+            btUpdate.Enabled = btDeleat.Enabled = listPerson.Count() > 0 ? true : false;
+
+            /*　↑どっちでも良き
+            if (listPerson.Count() > 0)
             {
-                if (listPerson != null)
-                {
-                    btDeleat.Enabled = true;
-                    btUpdate.Enabled = true;
-                } else
-                {
-                    btDeleat.Enabled = false;
-                    btUpdate.Enabled = false;
-                }
+                //マスク解除
+                btDeleat.Enabled = true;
+                btUpdate.Enabled = true;
             } else
             {
+                //マスク設定
                 btDeleat.Enabled = false;
                 btUpdate.Enabled = false;
             }
+            */
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            btDeleat.Enabled = false;//削除ボタンをマスク
-            btUpdate.Enabled = false;//更新ボタン
+            EnabledCheck();
         }
 
 
@@ -220,9 +207,9 @@ namespace AddressBook
                 {
                     //バイナリ形式でシリアル化
                     var bf = new BinaryFormatter();
-                    using (FileStream fs = File.Open(sfdSaveDialog.FileName,FileMode.Create))
+                    using (FileStream fs = File.Open(sfdSaveDialog.FileName, FileMode.Create))
                     {
-                        bf.Serialize(fs,listPerson);
+                        bf.Serialize(fs, listPerson);
                     }
                 } catch (Exception ex)
                 {
@@ -235,32 +222,33 @@ namespace AddressBook
         {
             if (ofdFileOpenDialog.ShowDialog() == DialogResult.OK)
             {
+                cbCompany.Items.Clear();
                 try
                 {
                     //バイナリ形式で逆シリアル化
                     var bf = new BinaryFormatter();
-                    using (FileStream fs = File.Open(ofdFileOpenDialog.FileName, FileMode.Open,FileAccess.Read))
+                    using (FileStream fs = File.Open(ofdFileOpenDialog.FileName, FileMode.Open, FileAccess.Read))
                     {
                         //逆シリアル化して読み込む
                         listPerson = (BindingList<Person>)bf.Deserialize(fs);
                         dgvPersons.DataSource = null;
                         dgvPersons.DataSource = listPerson;
-                    }
+                    }                       
                 } catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-
                 }
 
-                foreach (var item in listPerson)
+                foreach (var item in listPerson.Select(p=>p.Company))
                 {
-                    setCbCompany(item.Company);//存在する会社を登録
+                    setCbCompany(item);//存在する会社を登録
                 }
             }
+            EnabledCheck();
         }
 
 
-        private void btPictureClear_Click(object sender, EventArgs e){pbPicture.Image = null;}
+        private void btPictureClear_Click(object sender, EventArgs e) { pbPicture.Image = null; }
         private void textBox3_TextChanged(object sender, EventArgs e) { }
         private void dgvPersons_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
     }
