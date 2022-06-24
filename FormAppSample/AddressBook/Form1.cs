@@ -9,6 +9,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static AddressBook.Person;
 
 namespace AddressBook
 {
@@ -31,6 +32,7 @@ namespace AddressBook
             }
         }
 
+        
         private void btAddPerson_Click(object sender, EventArgs e)
         {
             //氏名が未入力なら登録しない
@@ -48,6 +50,8 @@ namespace AddressBook
                 Company = cbCompany.Text,
                 Picture = pbPicture.Image,
                 listGroup = GetCheckBoxGroup(),
+                KindNumber = GetRadioButtonKindNumber(),
+                TelNumber = tbTelNumber.Text,
                 Registration = dtp.Value,
             };
             listPerson.Add(newPerson);
@@ -55,6 +59,7 @@ namespace AddressBook
             EnabledCheck();
 
             setCbCompany(cbCompany.Text);
+            GetRadioButtonKindNumberClear();
         }
 
         //コンボボックスに会社名を登録する
@@ -109,7 +114,34 @@ namespace AddressBook
             cbCompany.Text = listPerson[getIndex].Company;
             pbPicture.Image = listPerson[getIndex].Picture;
             dtp.Value = listPerson[getIndex].Registration.Year > 1900 ? listPerson[getIndex].Registration : DateTime.Today;
+            tbTelNumber.Text = listPerson[getIndex].TelNumber;
 
+            ListGroupCheck(getIndex);
+            RadioBottonCheck(getIndex);
+        }
+
+        private void RadioBottonCheck(int getIndex)
+        {
+            GetRadioButtonKindNumberClear();
+
+            //番号種別チェック処理
+            switch (listPerson[getIndex].KindNumber)
+            {
+                case KindNumberType.自宅:
+                rbHome.Checked = true;
+                break;
+                case KindNumberType.携帯:
+                rbCellPhone.Checked = true;
+                break;
+                case KindNumberType.その他:
+                break;
+                default:
+                break;
+            }
+        }
+
+        private void ListGroupCheck(int getIndex)
+        {
             groupCheckBoxAllClear();
 
             foreach (var group in listPerson[getIndex].listGroup)
@@ -138,15 +170,13 @@ namespace AddressBook
             }
         }
 
+
         private void groupCheckBoxAllClear()
         {
             cbFamily.Checked = false;
             cbFriend.Checked = false;
             cbWork.Checked = false;
             cbOther.Checked = false;
-
-            //又は
-            //cbFamily.Checked = cbFriend.Checked = cbWork.Checked = cbOther.Checked = false;
         }
 
         //更新ボタンが押された時の処理
@@ -163,6 +193,8 @@ namespace AddressBook
             listPerson[getIndex].Picture = pbPicture.Image;
             listPerson[getIndex].listGroup = GetCheckBoxGroup();
             listPerson[getIndex].Registration = dtp.Value;
+            listPerson[getIndex].TelNumber = tbTelNumber.Text;
+            listPerson[getIndex].KindNumber = GetRadioButtonKindNumber();
             dgvPersons.Refresh();//データグリッドビュー更新
         }
 
@@ -172,27 +204,12 @@ namespace AddressBook
             listPerson.RemoveAt(dgvPersons.CurrentRow.Index);
 
             EnabledCheck();
-
         }
 
         //更新・削除ボタンのマスクを行う（マスク判定含む）
         private void EnabledCheck()
         {
             btUpdate.Enabled = btDeleat.Enabled = listPerson.Count() > 0 ? true : false;
-
-            /*　↑どっちでも良き
-            if (listPerson.Count() > 0)
-            {
-                //マスク解除
-                btDeleat.Enabled = true;
-                btUpdate.Enabled = true;
-            } else
-            {
-                //マスク設定
-                btDeleat.Enabled = false;
-                btUpdate.Enabled = false;
-            }
-            */
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -250,6 +267,33 @@ namespace AddressBook
             EnabledCheck();
         }
 
+        private void rbChecked()
+        {
+            rbHome.Checked = rbCellPhone.Checked = listPerson.Count() > 0 ? true : false;
+        }
+
+        private KindNumberType GetRadioButtonKindNumber()
+        {
+            var selectedKindNumber = KindNumberType.その他;
+
+            if (rbHome.Checked)
+            {
+                return KindNumberType.自宅;
+            }
+
+            if (rbCellPhone.Checked)
+            {
+                return KindNumberType.携帯;
+            }
+
+            return selectedKindNumber;
+        }
+
+        private void GetRadioButtonKindNumberClear()
+        {
+            rbHome.Checked = false;
+            rbCellPhone.Checked = false;
+        }
 
         private void btPictureClear_Click(object sender, EventArgs e) { pbPicture.Image = null; }
         private void textBox3_TextChanged(object sender, EventArgs e) { }
