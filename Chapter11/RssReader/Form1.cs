@@ -39,9 +39,34 @@ namespace RssReader
 
         }
 
+        private void btBack_Click(object sender, EventArgs e)
+        {
+            wvBrowser.GoBack();
+        }
+
+        private void btFoward_Click(object sender, EventArgs e)
+        {
+            wvBrowser.GoForward();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            btBack.Enabled = wvBrowser.CanGoBack;
+            btFoward.Enabled = wvBrowser.CanGoForward;
+        }
+
+        private void wvBrowser_NavigationCompleted(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNavigationCompletedEventArgs e)
+        {
+            btBack.Enabled = wvBrowser.CanGoBack;
+            btFoward.Enabled = wvBrowser.CanGoForward;
+        }
+
         private void lbRssTitle_Click(object sender, EventArgs e)
         {
             int index = lbRssTitle.SelectedIndex;   //選択した箇所のインデックスを取得（０～　）
+            var url = xLink.ElementAt(index);
+
+            wvBrowser.Source = new Uri(url);
         }
     }
 }
