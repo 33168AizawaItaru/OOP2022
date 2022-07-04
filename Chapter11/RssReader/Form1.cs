@@ -30,33 +30,27 @@ namespace RssReader
                 var xdoc = XDocument.Load(stream);
                 xTitle = xdoc.Root.Descendants("item").Select(x => (string)x.Element("title"));
                 xLink = xdoc.Root.Descendants("item").Select(x => (string)x.Element("link"));
+
                 foreach (var data in xTitle)
                 {
                     lbRssTitle.Items.Add(data);
                 }
-            
             }
-
-        }
-
-        private void btBack_Click(object sender, EventArgs e)
-        {
-            wvBrowser.GoBack();
-        }
-
-        private void btFoward_Click(object sender, EventArgs e)
-        {
-            wvBrowser.GoForward();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            btBack.Enabled = wvBrowser.CanGoBack;
-            btFoward.Enabled = wvBrowser.CanGoForward;
+            BackFowardButtonMaskCheck();
         }
 
         private void wvBrowser_NavigationCompleted(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNavigationCompletedEventArgs e)
         {
+            BackFowardButtonMaskCheck();
+        }
+
+        private void BackFowardButtonMaskCheck()
+        {
+            //進む・戻るボタンのマスク設定
             btBack.Enabled = wvBrowser.CanGoBack;
             btFoward.Enabled = wvBrowser.CanGoForward;
         }
@@ -64,9 +58,13 @@ namespace RssReader
         private void lbRssTitle_Click(object sender, EventArgs e)
         {
             int index = lbRssTitle.SelectedIndex;   //選択した箇所のインデックスを取得（０～　）
-            var url = xLink.ElementAt(index);
+            if (index == -1) return;
 
+            var url = xLink.ElementAt(index);
             wvBrowser.Source = new Uri(url);
         }
+
+        private void btBack_Click(object sender, EventArgs e) { wvBrowser.GoBack(); }
+        private void btFoward_Click(object sender, EventArgs e) { wvBrowser.GoForward(); }
     }
 }
