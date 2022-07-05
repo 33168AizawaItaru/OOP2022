@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,10 @@ namespace Exercise1
 
             var newfile = "sports.xml";
             Exercise1_4(file, newfile);
+
+            // これは確認用
+            var text = File.ReadAllText(newfile);
+            Console.WriteLine(text);
         }
 
         private static void Exercise1_1(string file)
@@ -54,12 +59,24 @@ namespace Exercise1
         {
             var xdoc = XDocument.Load(file);
 
+            var sample = xdoc.Root.Elements().Select(x => new {
+                                                        Name = x.Element("name").Value,
+                                                        TeamMenber = x.Element("teammembers").Value}
+                                                     ).OrderByDescending(x=>int.Parse(x.TeamMenber)).First();
             
+            Console.WriteLine("{0}({1}人)",sample.Name,sample.TeamMenber);
         }
 
         private static void Exercise1_4(string file, string newfile)
         {
-            
+            var xdoc = XDocument.Load(file);
+            var soccer = new XElement("ballsport",
+                                        new XElement("name", "サッカー", new XAttribute("kanji", "蹴球")),
+                                        new XElement("teammembers", 11),
+                                        new XElement("firstplayed", 1863)
+                                     );
+            xdoc.Root.Add(soccer);
+            xdoc.Save(newfile);
         }
     }
 }
