@@ -298,5 +298,10 @@ namespace AddressBook
         private void btPictureClear_Click(object sender, EventArgs e) { pbPicture.Image = null; }
         private void textBox3_TextChanged(object sender, EventArgs e) { }
         private void dgvPersons_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+
+        private void dtp_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -319,6 +319,7 @@ namespace AddressBook
             this.dtp.Name = "dtp";
             this.dtp.Size = new System.Drawing.Size(200, 26);
             this.dtp.TabIndex = 9;
+            this.dtp.ValueChanged += new System.EventHandler(this.dtp_ValueChanged);
             // 
             // label7
             // 
