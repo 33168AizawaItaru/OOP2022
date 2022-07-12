@@ -151,17 +151,6 @@ namespace Exercise01
                 var serializer = new DataContractJsonSerializer(emp.GetType(), settings);
                 serializer.WriteObject(stream, emp);
             }
-
-            ////逆シリアル化
-            //using (var stream = new FileStream("employees.json",FileMode.Open,FileAccess.Read))
-            //{
-            //    var serializer = new DataContractJsonSerializer(typeof(Employee[]));
-            //    var employees = serializer.ReadObject(stream) as Employee[];
-            //    foreach (var employee in employees)
-            //    {
-            //        Console.WriteLine(employee);
-            //    }
-            //}
         }
     }
 }
