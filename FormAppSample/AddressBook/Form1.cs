@@ -65,7 +65,6 @@ namespace AddressBook
         //コンボボックスに会社名を登録する
         private void setCbCompany(string company)
         {
-
             if (!cbCompany.Items.Contains(company))
             {
                 //登録されていなければ登録処理
@@ -300,6 +299,11 @@ namespace AddressBook
         private void dgvPersons_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
 
         private void dtp_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbCompany_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

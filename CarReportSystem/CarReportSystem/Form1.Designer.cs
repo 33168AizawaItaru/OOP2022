@@ -30,25 +30,25 @@ namespace CarReportSystem
         private void InitializeComponent()
         {
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.Recorder = new System.Windows.Forms.ComboBox();
-            this.Toyota = new System.Windows.Forms.RadioButton();
-            this.Nissan = new System.Windows.Forms.RadioButton();
-            this.Honda = new System.Windows.Forms.RadioButton();
-            this.Subaru = new System.Windows.Forms.RadioButton();
-            this.ForeignCar = new System.Windows.Forms.RadioButton();
-            this.Other = new System.Windows.Forms.RadioButton();
+            this.auther = new System.Windows.Forms.ComboBox();
+            this.toyota = new System.Windows.Forms.RadioButton();
+            this.nissan = new System.Windows.Forms.RadioButton();
+            this.honda = new System.Windows.Forms.RadioButton();
+            this.subaru = new System.Windows.Forms.RadioButton();
+            this.foreignCar = new System.Windows.Forms.RadioButton();
+            this.other = new System.Windows.Forms.RadioButton();
             this.carName = new System.Windows.Forms.ComboBox();
-            this.Report = new System.Windows.Forms.TextBox();
-            this.DataGridView = new System.Windows.Forms.DataGridView();
-            this.Exit = new System.Windows.Forms.Button();
-            this.PictureOpen = new System.Windows.Forms.Button();
-            this.PictureDeleat = new System.Windows.Forms.Button();
-            this.ArticleSave = new System.Windows.Forms.Button();
-            this.ArticleOpen = new System.Windows.Forms.Button();
-            this.ArticleAdd = new System.Windows.Forms.Button();
-            this.ArticleRevision = new System.Windows.Forms.Button();
-            this.ArticleDeleat = new System.Windows.Forms.Button();
-            this.Picture = new System.Windows.Forms.PictureBox();
+            this.report = new System.Windows.Forms.TextBox();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.exit = new System.Windows.Forms.Button();
+            this.pictureOpen = new System.Windows.Forms.Button();
+            this.pictureDeleat = new System.Windows.Forms.Button();
+            this.articleSave = new System.Windows.Forms.Button();
+            this.articleOpen = new System.Windows.Forms.Button();
+            this.articleAdd = new System.Windows.Forms.Button();
+            this.articleRevision = new System.Windows.Forms.Button();
+            this.articleDeleat = new System.Windows.Forms.Button();
+            this.picture = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -57,8 +57,9 @@ namespace CarReportSystem
             this.label6 = new System.Windows.Forms.Label();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Picture)).BeginInit();
+            this.label5 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimePicker
@@ -68,79 +69,79 @@ namespace CarReportSystem
             this.dateTimePicker.Size = new System.Drawing.Size(200, 19);
             this.dateTimePicker.TabIndex = 0;
             // 
-            // Recorder
+            // auther
             // 
-            this.Recorder.FormattingEnabled = true;
-            this.Recorder.Location = new System.Drawing.Point(111, 54);
-            this.Recorder.Name = "Recorder";
-            this.Recorder.Size = new System.Drawing.Size(200, 20);
-            this.Recorder.TabIndex = 1;
+            this.auther.FormattingEnabled = true;
+            this.auther.Location = new System.Drawing.Point(111, 54);
+            this.auther.Name = "auther";
+            this.auther.Size = new System.Drawing.Size(200, 20);
+            this.auther.TabIndex = 1;
             // 
-            // Toyota
+            // toyota
             // 
-            this.Toyota.AutoSize = true;
-            this.Toyota.Location = new System.Drawing.Point(111, 102);
-            this.Toyota.Name = "Toyota";
-            this.Toyota.Size = new System.Drawing.Size(47, 16);
-            this.Toyota.TabIndex = 2;
-            this.Toyota.TabStop = true;
-            this.Toyota.Text = "トヨタ";
-            this.Toyota.UseVisualStyleBackColor = true;
+            this.toyota.AutoSize = true;
+            this.toyota.Location = new System.Drawing.Point(111, 102);
+            this.toyota.Name = "toyota";
+            this.toyota.Size = new System.Drawing.Size(47, 16);
+            this.toyota.TabIndex = 2;
+            this.toyota.TabStop = true;
+            this.toyota.Text = "トヨタ";
+            this.toyota.UseVisualStyleBackColor = true;
             // 
-            // Nissan
+            // nissan
             // 
-            this.Nissan.AutoSize = true;
-            this.Nissan.Location = new System.Drawing.Point(164, 102);
-            this.Nissan.Name = "Nissan";
-            this.Nissan.Size = new System.Drawing.Size(47, 16);
-            this.Nissan.TabIndex = 3;
-            this.Nissan.TabStop = true;
-            this.Nissan.Text = "日産";
-            this.Nissan.UseVisualStyleBackColor = true;
+            this.nissan.AutoSize = true;
+            this.nissan.Location = new System.Drawing.Point(164, 102);
+            this.nissan.Name = "nissan";
+            this.nissan.Size = new System.Drawing.Size(47, 16);
+            this.nissan.TabIndex = 3;
+            this.nissan.TabStop = true;
+            this.nissan.Text = "日産";
+            this.nissan.UseVisualStyleBackColor = true;
             // 
-            // Honda
+            // honda
             // 
-            this.Honda.AutoSize = true;
-            this.Honda.Location = new System.Drawing.Point(217, 102);
-            this.Honda.Name = "Honda";
-            this.Honda.Size = new System.Drawing.Size(51, 16);
-            this.Honda.TabIndex = 4;
-            this.Honda.TabStop = true;
-            this.Honda.Text = "ホンダ";
-            this.Honda.UseVisualStyleBackColor = true;
+            this.honda.AutoSize = true;
+            this.honda.Location = new System.Drawing.Point(217, 102);
+            this.honda.Name = "honda";
+            this.honda.Size = new System.Drawing.Size(51, 16);
+            this.honda.TabIndex = 4;
+            this.honda.TabStop = true;
+            this.honda.Text = "ホンダ";
+            this.honda.UseVisualStyleBackColor = true;
             // 
-            // Subaru
+            // subaru
             // 
-            this.Subaru.AutoSize = true;
-            this.Subaru.Location = new System.Drawing.Point(274, 102);
-            this.Subaru.Name = "Subaru";
-            this.Subaru.Size = new System.Drawing.Size(52, 16);
-            this.Subaru.TabIndex = 5;
-            this.Subaru.TabStop = true;
-            this.Subaru.Text = "スバル";
-            this.Subaru.UseVisualStyleBackColor = true;
+            this.subaru.AutoSize = true;
+            this.subaru.Location = new System.Drawing.Point(274, 102);
+            this.subaru.Name = "subaru";
+            this.subaru.Size = new System.Drawing.Size(52, 16);
+            this.subaru.TabIndex = 5;
+            this.subaru.TabStop = true;
+            this.subaru.Text = "スバル";
+            this.subaru.UseVisualStyleBackColor = true;
             // 
-            // ForeignCar
+            // foreignCar
             // 
-            this.ForeignCar.AutoSize = true;
-            this.ForeignCar.Location = new System.Drawing.Point(332, 102);
-            this.ForeignCar.Name = "ForeignCar";
-            this.ForeignCar.Size = new System.Drawing.Size(47, 16);
-            this.ForeignCar.TabIndex = 6;
-            this.ForeignCar.TabStop = true;
-            this.ForeignCar.Text = "外車";
-            this.ForeignCar.UseVisualStyleBackColor = true;
+            this.foreignCar.AutoSize = true;
+            this.foreignCar.Location = new System.Drawing.Point(332, 102);
+            this.foreignCar.Name = "foreignCar";
+            this.foreignCar.Size = new System.Drawing.Size(47, 16);
+            this.foreignCar.TabIndex = 6;
+            this.foreignCar.TabStop = true;
+            this.foreignCar.Text = "外車";
+            this.foreignCar.UseVisualStyleBackColor = true;
             // 
-            // Other
+            // other
             // 
-            this.Other.AutoSize = true;
-            this.Other.Location = new System.Drawing.Point(385, 102);
-            this.Other.Name = "Other";
-            this.Other.Size = new System.Drawing.Size(54, 16);
-            this.Other.TabIndex = 7;
-            this.Other.TabStop = true;
-            this.Other.Text = "その他";
-            this.Other.UseVisualStyleBackColor = true;
+            this.other.AutoSize = true;
+            this.other.Location = new System.Drawing.Point(385, 102);
+            this.other.Name = "other";
+            this.other.Size = new System.Drawing.Size(54, 16);
+            this.other.TabIndex = 7;
+            this.other.TabStop = true;
+            this.other.Text = "その他";
+            this.other.UseVisualStyleBackColor = true;
             // 
             // carName
             // 
@@ -150,113 +151,118 @@ namespace CarReportSystem
             this.carName.Size = new System.Drawing.Size(200, 20);
             this.carName.TabIndex = 8;
             // 
-            // Report
+            // report
             // 
-            this.Report.Font = new System.Drawing.Font("ＭＳ 明朝", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Report.Location = new System.Drawing.Point(111, 183);
-            this.Report.Multiline = true;
-            this.Report.Name = "Report";
-            this.Report.Size = new System.Drawing.Size(409, 131);
-            this.Report.TabIndex = 10;
+            this.report.Font = new System.Drawing.Font("ＭＳ 明朝", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.report.Location = new System.Drawing.Point(111, 183);
+            this.report.Multiline = true;
+            this.report.Name = "report";
+            this.report.Size = new System.Drawing.Size(409, 131);
+            this.report.TabIndex = 10;
             // 
-            // DataGridView
+            // dataGridView
             // 
-            this.DataGridView.AllowUserToAddRows = false;
-            this.DataGridView.AllowUserToDeleteRows = false;
-            this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridView.Location = new System.Drawing.Point(111, 320);
-            this.DataGridView.MultiSelect = false;
-            this.DataGridView.Name = "DataGridView";
-            this.DataGridView.RowTemplate.Height = 21;
-            this.DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridView.Size = new System.Drawing.Size(760, 176);
-            this.DataGridView.TabIndex = 11;
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Location = new System.Drawing.Point(111, 320);
+            this.dataGridView.MultiSelect = false;
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.RowTemplate.Height = 21;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.Size = new System.Drawing.Size(760, 176);
+            this.dataGridView.TabIndex = 11;
+            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             // 
-            // Exit
+            // exit
             // 
-            this.Exit.Location = new System.Drawing.Point(761, 512);
-            this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(110, 31);
-            this.Exit.TabIndex = 12;
-            this.Exit.Text = "終了";
-            this.Exit.UseVisualStyleBackColor = true;
-            this.Exit.Click += new System.EventHandler(this.Exit_Click);
+            this.exit.Location = new System.Drawing.Point(761, 512);
+            this.exit.Name = "exit";
+            this.exit.Size = new System.Drawing.Size(110, 31);
+            this.exit.TabIndex = 12;
+            this.exit.Text = "終了";
+            this.exit.UseVisualStyleBackColor = true;
+            this.exit.Click += new System.EventHandler(this.Exit_Click);
             // 
-            // PictureOpen
+            // pictureOpen
             // 
-            this.PictureOpen.Location = new System.Drawing.Point(680, 12);
-            this.PictureOpen.Name = "PictureOpen";
-            this.PictureOpen.Size = new System.Drawing.Size(75, 23);
-            this.PictureOpen.TabIndex = 13;
-            this.PictureOpen.Text = "開く...";
-            this.PictureOpen.UseVisualStyleBackColor = true;
-            this.PictureOpen.Click += new System.EventHandler(this.PictureOpen_Click);
+            this.pictureOpen.Location = new System.Drawing.Point(680, 12);
+            this.pictureOpen.Name = "pictureOpen";
+            this.pictureOpen.Size = new System.Drawing.Size(75, 23);
+            this.pictureOpen.TabIndex = 13;
+            this.pictureOpen.Text = "開く...";
+            this.pictureOpen.UseVisualStyleBackColor = true;
+            this.pictureOpen.Click += new System.EventHandler(this.PictureOpen_Click);
             // 
-            // PictureDeleat
+            // pictureDeleat
             // 
-            this.PictureDeleat.Location = new System.Drawing.Point(761, 12);
-            this.PictureDeleat.Name = "PictureDeleat";
-            this.PictureDeleat.Size = new System.Drawing.Size(75, 23);
-            this.PictureDeleat.TabIndex = 14;
-            this.PictureDeleat.Text = "削除";
-            this.PictureDeleat.UseVisualStyleBackColor = true;
-            this.PictureDeleat.Click += new System.EventHandler(this.PictureDeleat_Click);
+            this.pictureDeleat.Location = new System.Drawing.Point(761, 12);
+            this.pictureDeleat.Name = "pictureDeleat";
+            this.pictureDeleat.Size = new System.Drawing.Size(75, 23);
+            this.pictureDeleat.TabIndex = 14;
+            this.pictureDeleat.Text = "削除";
+            this.pictureDeleat.UseVisualStyleBackColor = true;
+            this.pictureDeleat.Click += new System.EventHandler(this.PictureDeleat_Click);
             // 
-            // ArticleSave
+            // articleSave
             // 
-            this.ArticleSave.Location = new System.Drawing.Point(21, 387);
-            this.ArticleSave.Name = "ArticleSave";
-            this.ArticleSave.Size = new System.Drawing.Size(75, 34);
-            this.ArticleSave.TabIndex = 16;
-            this.ArticleSave.Text = "保存";
-            this.ArticleSave.UseVisualStyleBackColor = true;
+            this.articleSave.Location = new System.Drawing.Point(21, 387);
+            this.articleSave.Name = "articleSave";
+            this.articleSave.Size = new System.Drawing.Size(75, 34);
+            this.articleSave.TabIndex = 16;
+            this.articleSave.Text = "保存";
+            this.articleSave.UseVisualStyleBackColor = true;
+            this.articleSave.Click += new System.EventHandler(this.articleSave_Click);
             // 
-            // ArticleOpen
+            // articleOpen
             // 
-            this.ArticleOpen.Location = new System.Drawing.Point(21, 348);
-            this.ArticleOpen.Name = "ArticleOpen";
-            this.ArticleOpen.Size = new System.Drawing.Size(75, 33);
-            this.ArticleOpen.TabIndex = 17;
-            this.ArticleOpen.Text = "開く...";
-            this.ArticleOpen.UseVisualStyleBackColor = true;
-            this.ArticleOpen.Click += new System.EventHandler(this.ArticleOpen_Click);
+            this.articleOpen.Location = new System.Drawing.Point(21, 348);
+            this.articleOpen.Name = "articleOpen";
+            this.articleOpen.Size = new System.Drawing.Size(75, 33);
+            this.articleOpen.TabIndex = 17;
+            this.articleOpen.Text = "開く...";
+            this.articleOpen.UseVisualStyleBackColor = true;
+            this.articleOpen.Click += new System.EventHandler(this.ArticleOpen_Click);
             // 
-            // ArticleAdd
+            // articleAdd
             // 
-            this.ArticleAdd.Location = new System.Drawing.Point(568, 291);
-            this.ArticleAdd.Name = "ArticleAdd";
-            this.ArticleAdd.Size = new System.Drawing.Size(75, 23);
-            this.ArticleAdd.TabIndex = 18;
-            this.ArticleAdd.Text = "追加";
-            this.ArticleAdd.UseVisualStyleBackColor = true;
-            this.ArticleAdd.Click += new System.EventHandler(this.ArticleAdd_Click);
+            this.articleAdd.Location = new System.Drawing.Point(568, 291);
+            this.articleAdd.Name = "articleAdd";
+            this.articleAdd.Size = new System.Drawing.Size(75, 23);
+            this.articleAdd.TabIndex = 18;
+            this.articleAdd.Text = "追加";
+            this.articleAdd.UseVisualStyleBackColor = true;
+            this.articleAdd.Click += new System.EventHandler(this.ArticleAdd_Click);
             // 
-            // ArticleRevision
+            // articleRevision
             // 
-            this.ArticleRevision.Location = new System.Drawing.Point(669, 291);
-            this.ArticleRevision.Name = "ArticleRevision";
-            this.ArticleRevision.Size = new System.Drawing.Size(75, 23);
-            this.ArticleRevision.TabIndex = 19;
-            this.ArticleRevision.Text = "修正";
-            this.ArticleRevision.UseVisualStyleBackColor = true;
+            this.articleRevision.Location = new System.Drawing.Point(669, 291);
+            this.articleRevision.Name = "articleRevision";
+            this.articleRevision.Size = new System.Drawing.Size(75, 23);
+            this.articleRevision.TabIndex = 19;
+            this.articleRevision.Text = "修正";
+            this.articleRevision.UseVisualStyleBackColor = true;
+            this.articleRevision.Click += new System.EventHandler(this.articleRevision_Click);
             // 
-            // ArticleDeleat
+            // articleDeleat
             // 
-            this.ArticleDeleat.Location = new System.Drawing.Point(773, 291);
-            this.ArticleDeleat.Name = "ArticleDeleat";
-            this.ArticleDeleat.Size = new System.Drawing.Size(75, 23);
-            this.ArticleDeleat.TabIndex = 20;
-            this.ArticleDeleat.Text = "削除";
-            this.ArticleDeleat.UseVisualStyleBackColor = true;
+            this.articleDeleat.Location = new System.Drawing.Point(773, 291);
+            this.articleDeleat.Name = "articleDeleat";
+            this.articleDeleat.Size = new System.Drawing.Size(75, 23);
+            this.articleDeleat.TabIndex = 20;
+            this.articleDeleat.Text = "削除";
+            this.articleDeleat.UseVisualStyleBackColor = true;
+            this.articleDeleat.Click += new System.EventHandler(this.articleDeleat_Click);
             // 
-            // Picture
+            // picture
             // 
-            this.Picture.BackColor = System.Drawing.SystemColors.Control;
-            this.Picture.Location = new System.Drawing.Point(579, 41);
-            this.Picture.Name = "Picture";
-            this.Picture.Size = new System.Drawing.Size(257, 232);
-            this.Picture.TabIndex = 21;
-            this.Picture.TabStop = false;
+            this.picture.BackColor = System.Drawing.SystemColors.Control;
+            this.picture.Location = new System.Drawing.Point(579, 53);
+            this.picture.Name = "picture";
+            this.picture.Size = new System.Drawing.Size(257, 232);
+            this.picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picture.TabIndex = 21;
+            this.picture.TabStop = false;
             // 
             // label1
             // 
@@ -321,41 +327,53 @@ namespace CarReportSystem
             // 
             this.openFileDialog.FileName = "openFileDialog1";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label5.Location = new System.Drawing.Point(576, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(33, 13);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "画像";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(883, 555);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.Picture);
-            this.Controls.Add(this.ArticleDeleat);
-            this.Controls.Add(this.ArticleRevision);
-            this.Controls.Add(this.ArticleAdd);
-            this.Controls.Add(this.ArticleOpen);
-            this.Controls.Add(this.ArticleSave);
-            this.Controls.Add(this.PictureDeleat);
-            this.Controls.Add(this.PictureOpen);
-            this.Controls.Add(this.Exit);
-            this.Controls.Add(this.DataGridView);
-            this.Controls.Add(this.Report);
+            this.Controls.Add(this.picture);
+            this.Controls.Add(this.articleDeleat);
+            this.Controls.Add(this.articleRevision);
+            this.Controls.Add(this.articleAdd);
+            this.Controls.Add(this.articleOpen);
+            this.Controls.Add(this.articleSave);
+            this.Controls.Add(this.pictureDeleat);
+            this.Controls.Add(this.pictureOpen);
+            this.Controls.Add(this.exit);
+            this.Controls.Add(this.dataGridView);
+            this.Controls.Add(this.report);
             this.Controls.Add(this.carName);
-            this.Controls.Add(this.Other);
-            this.Controls.Add(this.ForeignCar);
-            this.Controls.Add(this.Subaru);
-            this.Controls.Add(this.Honda);
-            this.Controls.Add(this.Nissan);
-            this.Controls.Add(this.Toyota);
-            this.Controls.Add(this.Recorder);
+            this.Controls.Add(this.other);
+            this.Controls.Add(this.foreignCar);
+            this.Controls.Add(this.subaru);
+            this.Controls.Add(this.honda);
+            this.Controls.Add(this.nissan);
+            this.Controls.Add(this.toyota);
+            this.Controls.Add(this.auther);
             this.Controls.Add(this.dateTimePicker);
             this.Name = "Form1";
             this.Text = "試乗レポート管理システム";
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Picture)).EndInit();
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -364,25 +382,25 @@ namespace CarReportSystem
         #endregion
 
         private System.Windows.Forms.DateTimePicker dateTimePicker;
-        private System.Windows.Forms.ComboBox Recorder;
-        private System.Windows.Forms.RadioButton Toyota;
-        private System.Windows.Forms.RadioButton Nissan;
-        private System.Windows.Forms.RadioButton Honda;
-        private System.Windows.Forms.RadioButton Subaru;
-        private System.Windows.Forms.RadioButton ForeignCar;
-        private System.Windows.Forms.RadioButton Other;
+        private System.Windows.Forms.ComboBox auther;
+        private System.Windows.Forms.RadioButton toyota;
+        private System.Windows.Forms.RadioButton nissan;
+        private System.Windows.Forms.RadioButton honda;
+        private System.Windows.Forms.RadioButton subaru;
+        private System.Windows.Forms.RadioButton foreignCar;
+        private System.Windows.Forms.RadioButton other;
         private System.Windows.Forms.ComboBox carName;
-        private System.Windows.Forms.TextBox Report;
-        private System.Windows.Forms.DataGridView DataGridView;
-        private System.Windows.Forms.Button Exit;
-        private System.Windows.Forms.Button PictureOpen;
-        private System.Windows.Forms.Button PictureDeleat;
-        private System.Windows.Forms.Button ArticleSave;
-        private System.Windows.Forms.Button ArticleOpen;
-        private System.Windows.Forms.Button ArticleAdd;
-        private System.Windows.Forms.Button ArticleRevision;
-        private System.Windows.Forms.Button ArticleDeleat;
-        private System.Windows.Forms.PictureBox Picture;
+        private System.Windows.Forms.TextBox report;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.Button exit;
+        private System.Windows.Forms.Button pictureOpen;
+        private System.Windows.Forms.Button pictureDeleat;
+        private System.Windows.Forms.Button articleSave;
+        private System.Windows.Forms.Button articleOpen;
+        private System.Windows.Forms.Button articleAdd;
+        private System.Windows.Forms.Button articleRevision;
+        private System.Windows.Forms.Button articleDeleat;
+        private System.Windows.Forms.PictureBox picture;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -391,6 +409,7 @@ namespace CarReportSystem
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.Label label5;
     }
 }
 

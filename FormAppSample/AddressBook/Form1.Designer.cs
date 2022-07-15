@@ -279,6 +279,7 @@ namespace AddressBook
             this.cbCompany.Name = "cbCompany";
             this.cbCompany.Size = new System.Drawing.Size(351, 35);
             this.cbCompany.TabIndex = 7;
+            this.cbCompany.SelectedIndexChanged += new System.EventHandler(this.cbCompany_SelectedIndexChanged);
             // 
             // btOpen
             // 
