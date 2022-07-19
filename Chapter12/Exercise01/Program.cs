@@ -70,7 +70,7 @@ namespace Exercise01
                 HireDate = new DateTime(2001, 5, 10)
             };
 
-            ////シリアル化
+            //シリアル化
             using (var writer = XmlWriter.Create(outfile))
             {
                 var serializer = new XmlSerializer(emp.GetType());

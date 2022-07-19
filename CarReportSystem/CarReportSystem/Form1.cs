@@ -5,16 +5,22 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace CarReportSystem
 {
     public partial class Form1 : Form
     {
         BindingList<CarReport> listCarReport = new BindingList<CarReport>();
+        Settings settings = new Settings();
+
+
 
         public Form1()
         {
@@ -22,11 +28,7 @@ namespace CarReportSystem
             dataGridView.DataSource = listCarReport;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            EnabledCheck();
-            pictureDeleat.Enabled = false;
-        }
+
 
         #region 終了ボタン
         private void Exit_Click(object sender, EventArgs e)
@@ -257,7 +259,7 @@ namespace CarReportSystem
                     setAuther(item);//存在する会社を登録
                 }
 
-                picture.Image = null;
+                EnabledCheck();
             }
         }
         #endregion
@@ -297,5 +299,44 @@ namespace CarReportSystem
             articleRevision.Enabled = articleDeleat.Enabled = listCarReport.Count() > 0 ? true : false;
         }
         #endregion
+
+        #region レポート閉じるやつ
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //シリアル化
+            using (var writer = XmlWriter.Create("setting.xml"))
+            {
+                var serializer = new DataContractSerializer(settings.GetType());
+                serializer.WriteObject(writer, settings);
+            }
+        }
+        #endregion
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //逆シリアル化
+            using (var reader = XmlReader.Create("setting.xml"))
+            {
+                var serializer = new DataContractSerializer(typeof(Settings));
+                var setColor = serializer.ReadObject(reader) as Settings;
+                BackColor = setColor.MainFormColor;
+            }
+
+            EnabledCheck();
+        }
+
+        private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (colorSelect.ShowDialog() == DialogResult.OK)
+            {
+                BackColor = colorSelect.Color;
+                settings.MainFormColor = colorSelect.Color;
+            }
+        }
+
+        private void 保存ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
