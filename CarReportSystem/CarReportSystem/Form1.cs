@@ -20,15 +20,11 @@ namespace CarReportSystem
         BindingList<CarReport> listCarReport = new BindingList<CarReport>();
         Settings settings = new Settings();
 
-
-
         public Form1()
         {
             InitializeComponent();
             dataGridView.DataSource = listCarReport;
         }
-
-
 
         #region 終了ボタン
         private void Exit_Click(object sender, EventArgs e)
@@ -306,8 +302,8 @@ namespace CarReportSystem
             //シリアル化
             using (var writer = XmlWriter.Create("setting.xml"))
             {
-                var serializer = new DataContractSerializer(settings.GetType());
-                serializer.WriteObject(writer, settings);
+                var serializer = new XmlSerializer(settings.GetType());
+                serializer.Serialize(writer, settings);
             }
         }
         #endregion
@@ -317,9 +313,9 @@ namespace CarReportSystem
             //逆シリアル化
             using (var reader = XmlReader.Create("setting.xml"))
             {
-                var serializer = new DataContractSerializer(typeof(Settings));
-                var setColor = serializer.ReadObject(reader) as Settings;
-                BackColor = setColor.MainFormColor;
+                var serializer = new XmlSerializer(typeof(Settings));
+                settings = serializer.Deserialize(reader) as Settings;
+                BackColor = Color.FromArgb(settings.MainFormColor);
             }
 
             EnabledCheck();
@@ -329,8 +325,8 @@ namespace CarReportSystem
         {
             if (colorSelect.ShowDialog() == DialogResult.OK)
             {
-                BackColor = colorSelect.Color;
-                settings.MainFormColor = colorSelect.Color;
+                BackColor = colorSelect.Color;//背景変更
+                settings.MainFormColor = colorSelect.Color.ToArgb();
             }
         }
 
