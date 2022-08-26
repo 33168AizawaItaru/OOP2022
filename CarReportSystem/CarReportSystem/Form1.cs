@@ -18,7 +18,7 @@ namespace CarReportSystem
     public partial class Form1 : Form
     {
         BindingList<CarReport> listCarReport = new BindingList<CarReport>();
-        Settings settings = new Settings();
+        Settings settings = Settings.getInstance();
 
         public Form1()
         {
@@ -310,16 +310,23 @@ namespace CarReportSystem
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //逆シリアル化
-            using (var reader = XmlReader.Create("setting.xml"))
-            {
-                var serializer = new XmlSerializer(typeof(Settings));
-                settings = serializer.Deserialize(reader) as Settings;
-                BackColor = Color.FromArgb(settings.MainFormColor);
-            }
-
             EnabledCheck();
+
+            try
+            {
+                //逆シリアル化
+                using (var reader = XmlReader.Create("setting.xml"))
+                {
+                    var serializer = new XmlSerializer(typeof(Settings));
+                    settings = serializer.Deserialize(reader) as Settings;
+                    BackColor = Color.FromArgb(settings.MainFormColor);
+                }
+            } catch(Exception)
+            {
+
+            }
         }
+
 
         private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e)
         {
