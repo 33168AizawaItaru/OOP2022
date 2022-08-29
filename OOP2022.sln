@@ -97,6 +97,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TemplateMethod", "TemplateM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextFileProcessor", "Chapter17\TemplateMethod\TextFileProcessor\TextFileProcessor.csproj", "{EF79D78D-1F92-45BC-8E71-CABD49179AA7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LineCounter", "Chapter17\TemplateMethod\LineCounter\LineCounter.csproj", "{9A6B1630-3A78-4621-AC08-3D28419C27FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise1", "Chapter17\Exercise1\Exercise1\Exercise1.csproj", "{F2E87879-4927-4A6B-AAC1-922E2667AE17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -239,6 +243,14 @@ Global
 		{EF79D78D-1F92-45BC-8E71-CABD49179AA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF79D78D-1F92-45BC-8E71-CABD49179AA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF79D78D-1F92-45BC-8E71-CABD49179AA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A6B1630-3A78-4621-AC08-3D28419C27FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A6B1630-3A78-4621-AC08-3D28419C27FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A6B1630-3A78-4621-AC08-3D28419C27FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A6B1630-3A78-4621-AC08-3D28419C27FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2E87879-4927-4A6B-AAC1-922E2667AE17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2E87879-4927-4A6B-AAC1-922E2667AE17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2E87879-4927-4A6B-AAC1-922E2667AE17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2E87879-4927-4A6B-AAC1-922E2667AE17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -279,6 +291,8 @@ Global
 		{96053B5B-171C-4353-AA05-BD96DFF31DD1} = {D1A4CD8C-A3A2-4D2E-B1A0-37F6EC183C25}
 		{5B76A99F-0313-4068-9C70-B72378DEEC31} = {D1A4CD8C-A3A2-4D2E-B1A0-37F6EC183C25}
 		{EF79D78D-1F92-45BC-8E71-CABD49179AA7} = {5B76A99F-0313-4068-9C70-B72378DEEC31}
+		{9A6B1630-3A78-4621-AC08-3D28419C27FF} = {5B76A99F-0313-4068-9C70-B72378DEEC31}
+		{F2E87879-4927-4A6B-AAC1-922E2667AE17} = {D1A4CD8C-A3A2-4D2E-B1A0-37F6EC183C25}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4198BCB8-43F0-4799-9D94-2C984A2F5458}
