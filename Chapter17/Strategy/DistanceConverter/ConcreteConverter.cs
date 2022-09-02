@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DistanceConverter.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -66,7 +67,7 @@ namespace DistanceConverter
         }
     }
 
-    public class KmConverter : ConverterBase
+    public class KilometerConverter : ConverterBase
     {
         protected override double Ratio => 1000;
 

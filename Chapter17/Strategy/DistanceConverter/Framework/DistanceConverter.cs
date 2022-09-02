@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DistanceConverter
+namespace DistanceConverter.Framework
 {
     public class DistanceConverter
     {
@@ -22,7 +22,5 @@ namespace DistanceConverter
             var meter = From.ToMater(value);
             return To.FromMater(meter);
         }
-
-        
     }
 }
