@@ -146,6 +146,7 @@ namespace DataBaseSample
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "位置";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -201,7 +202,7 @@ namespace DataBaseSample
             this.社員DataGridView.Location = new System.Drawing.Point(12, 28);
             this.社員DataGridView.Name = "社員DataGridView";
             this.社員DataGridView.RowTemplate.Height = 21;
-            this.社員DataGridView.Size = new System.Drawing.Size(776, 372);
+            this.社員DataGridView.Size = new System.Drawing.Size(776, 400);
             this.社員DataGridView.TabIndex = 1;
             // 
             // btConnect
@@ -218,7 +219,7 @@ namespace DataBaseSample
             // btSave
             // 
             this.btSave.Font = new System.Drawing.Font("ＭＳ 明朝", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btSave.Location = new System.Drawing.Point(215, 449);
+            this.btSave.Location = new System.Drawing.Point(189, 449);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(171, 96);
             this.btSave.TabIndex = 3;
@@ -228,9 +229,10 @@ namespace DataBaseSample
             // 
             // btExecute
             // 
-            this.btExecute.Location = new System.Drawing.Point(431, 457);
+            this.btExecute.Font = new System.Drawing.Font("ＭＳ 明朝", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btExecute.Location = new System.Drawing.Point(465, 471);
             this.btExecute.Name = "btExecute";
-            this.btExecute.Size = new System.Drawing.Size(146, 88);
+            this.btExecute.Size = new System.Drawing.Size(135, 52);
             this.btExecute.TabIndex = 4;
             this.btExecute.Text = "実行";
             this.btExecute.UseVisualStyleBackColor = true;
@@ -238,9 +240,9 @@ namespace DataBaseSample
             // 
             // tbValue
             // 
-            this.tbValue.Location = new System.Drawing.Point(630, 496);
+            this.tbValue.Location = new System.Drawing.Point(628, 493);
             this.tbValue.Name = "tbValue";
-            this.tbValue.Size = new System.Drawing.Size(100, 19);
+            this.tbValue.Size = new System.Drawing.Size(160, 19);
             this.tbValue.TabIndex = 5;
             // 
             // dataGridViewTextBoxColumn1
