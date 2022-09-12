@@ -310,6 +310,8 @@ namespace CarReportSystem
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: このコード行はデータを 'infosys202215DataSet.CarReportDB' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            this.carReportDBTableAdapter.Fill(this.infosys202215DataSet.CarReportDB);
             EnabledCheck();
 
             try
@@ -339,6 +341,69 @@ namespace CarReportSystem
 
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    //バイナリ形式でシリアル化
+                    var bf = new BinaryFormatter();
+                    using (FileStream fs = File.Open(saveFileDialog.FileName, FileMode.Create))
+                    {
+                        bf.Serialize(fs, listCarReport);
+                    }
+                } catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void 終了ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void 開くToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                carName.Items.Clear();
+                auther.Items.Clear();
+                try
+                {
+                    //バイナリ形式で逆シリアル化
+                    var bf = new BinaryFormatter();
+                    using (FileStream fs = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                    {
+                        //逆シリアル化して読み込む
+                        listCarReport = (BindingList<CarReport>)bf.Deserialize(fs);
+                        dataGridView.DataSource = null;
+                        dataGridView.DataSource = listCarReport;
+                    }
+                } catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                foreach (var item in listCarReport.Select(p => p.CarName))
+                {
+                    setCarName(item);//存在する会社を登録
+                }
+
+                foreach (var item in listCarReport.Select(p => p.Auther))
+                {
+                    setAuther(item);//存在する会社を登録
+                }
+
+                EnabledCheck();
+            }
+        }
+
+        private void carReportDBBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.carReportDBBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202215DataSet);
 
         }
     }
