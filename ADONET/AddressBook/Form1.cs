@@ -146,5 +146,10 @@ namespace AddressBook
         {
             new Version().ShowDialog();
         }
+
+        private void tbSerch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
