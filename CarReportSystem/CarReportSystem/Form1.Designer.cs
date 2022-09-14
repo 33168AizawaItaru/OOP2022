@@ -42,7 +42,6 @@ namespace CarReportSystem
             this.report = new System.Windows.Forms.TextBox();
             this.pictureOpen = new System.Windows.Forms.Button();
             this.pictureDeleat = new System.Windows.Forms.Button();
-            this.btUpdate = new System.Windows.Forms.Button();
             this.Clear = new System.Windows.Forms.Button();
             this.picture = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -183,7 +182,7 @@ namespace CarReportSystem
             // 
             // pictureOpen
             // 
-            this.pictureOpen.Location = new System.Drawing.Point(700, 37);
+            this.pictureOpen.Location = new System.Drawing.Point(666, 71);
             this.pictureOpen.Name = "pictureOpen";
             this.pictureOpen.Size = new System.Drawing.Size(75, 23);
             this.pictureOpen.TabIndex = 13;
@@ -193,7 +192,7 @@ namespace CarReportSystem
             // 
             // pictureDeleat
             // 
-            this.pictureDeleat.Location = new System.Drawing.Point(781, 37);
+            this.pictureDeleat.Location = new System.Drawing.Point(747, 71);
             this.pictureDeleat.Name = "pictureDeleat";
             this.pictureDeleat.Size = new System.Drawing.Size(75, 23);
             this.pictureDeleat.TabIndex = 14;
@@ -201,23 +200,12 @@ namespace CarReportSystem
             this.pictureDeleat.UseVisualStyleBackColor = true;
             this.pictureDeleat.Click += new System.EventHandler(this.PictureDeleat_Click);
             // 
-            // btUpdate
-            // 
-            this.btUpdate.Font = new System.Drawing.Font("ＭＳ 明朝", 18F, System.Drawing.FontStyle.Bold);
-            this.btUpdate.Location = new System.Drawing.Point(19, 506);
-            this.btUpdate.Name = "btUpdate";
-            this.btUpdate.Size = new System.Drawing.Size(75, 34);
-            this.btUpdate.TabIndex = 16;
-            this.btUpdate.Text = "更新";
-            this.btUpdate.UseVisualStyleBackColor = true;
-            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
-            // 
             // Clear
             // 
-            this.Clear.Font = new System.Drawing.Font("ＭＳ 明朝", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Clear.Location = new System.Drawing.Point(761, 378);
+            this.Clear.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Clear.Location = new System.Drawing.Point(770, 646);
             this.Clear.Name = "Clear";
-            this.Clear.Size = new System.Drawing.Size(95, 42);
+            this.Clear.Size = new System.Drawing.Size(86, 34);
             this.Clear.TabIndex = 19;
             this.Clear.Text = "クリア";
             this.Clear.UseVisualStyleBackColor = true;
@@ -226,7 +214,7 @@ namespace CarReportSystem
             // picture
             // 
             this.picture.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.picture.Location = new System.Drawing.Point(599, 79);
+            this.picture.Location = new System.Drawing.Point(565, 107);
             this.picture.Name = "picture";
             this.picture.Size = new System.Drawing.Size(257, 232);
             this.picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -300,7 +288,7 @@ namespace CarReportSystem
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label5.Location = new System.Drawing.Point(610, 60);
+            this.label5.Location = new System.Drawing.Point(571, 87);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(33, 13);
             this.label5.TabIndex = 22;
@@ -330,28 +318,28 @@ namespace CarReportSystem
             // 開くToolStripMenuItem
             // 
             this.開くToolStripMenuItem.Name = "開くToolStripMenuItem";
-            this.開くToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.開くToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.開くToolStripMenuItem.Text = "接続";
             this.開くToolStripMenuItem.Click += new System.EventHandler(this.開くToolStripMenuItem_Click);
             // 
             // 保存ToolStripMenuItem
             // 
             this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.保存ToolStripMenuItem.Text = "更新";
             this.保存ToolStripMenuItem.Click += new System.EventHandler(this.保存ToolStripMenuItem_Click);
             // 
             // color
             // 
             this.color.Name = "color";
-            this.color.Size = new System.Drawing.Size(119, 22);
+            this.color.Size = new System.Drawing.Size(180, 22);
             this.color.Text = "色設定...";
             this.color.Click += new System.EventHandler(this.色設定ToolStripMenuItem_Click);
             // 
             // 終了ToolStripMenuItem
             // 
             this.終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
-            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.終了ToolStripMenuItem.Text = "終了";
             this.終了ToolStripMenuItem.Click += new System.EventHandler(this.終了ToolStripMenuItem_Click);
             // 
@@ -434,10 +422,10 @@ namespace CarReportSystem
             // 
             // btAdd
             // 
-            this.btAdd.Font = new System.Drawing.Font("ＭＳ 明朝", 18F, System.Drawing.FontStyle.Bold);
-            this.btAdd.Location = new System.Drawing.Point(19, 567);
+            this.btAdd.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Bold);
+            this.btAdd.Location = new System.Drawing.Point(613, 646);
             this.btAdd.Name = "btAdd";
-            this.btAdd.Size = new System.Drawing.Size(75, 34);
+            this.btAdd.Size = new System.Drawing.Size(86, 34);
             this.btAdd.TabIndex = 18;
             this.btAdd.Text = "追加";
             this.btAdd.UseVisualStyleBackColor = true;
@@ -445,18 +433,19 @@ namespace CarReportSystem
             // 
             // btSerch
             // 
-            this.btSerch.Location = new System.Drawing.Point(119, 378);
+            this.btSerch.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btSerch.Location = new System.Drawing.Point(111, 400);
             this.btSerch.Name = "btSerch";
             this.btSerch.Size = new System.Drawing.Size(75, 23);
             this.btSerch.TabIndex = 31;
             this.btSerch.Text = "名前検索";
-            this.btSerch.UseVisualStyleBackColor = true;
+            this.btSerch.UseVisualStyleBackColor = false;
             this.btSerch.Click += new System.EventHandler(this.btSerch_Click);
             // 
             // tbSerch
             // 
             this.tbSerch.Font = new System.Drawing.Font("ＭＳ 明朝", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbSerch.Location = new System.Drawing.Point(217, 374);
+            this.tbSerch.Location = new System.Drawing.Point(197, 389);
             this.tbSerch.Name = "tbSerch";
             this.tbSerch.Size = new System.Drawing.Size(182, 34);
             this.tbSerch.TabIndex = 30;
@@ -490,7 +479,6 @@ namespace CarReportSystem
             this.Controls.Add(this.picture);
             this.Controls.Add(this.Clear);
             this.Controls.Add(this.btAdd);
-            this.Controls.Add(this.btUpdate);
             this.Controls.Add(this.pictureDeleat);
             this.Controls.Add(this.pictureOpen);
             this.Controls.Add(this.report);
@@ -534,7 +522,6 @@ namespace CarReportSystem
         private System.Windows.Forms.TextBox report;
         private System.Windows.Forms.Button pictureOpen;
         private System.Windows.Forms.Button pictureDeleat;
-        private System.Windows.Forms.Button btUpdate;
         private System.Windows.Forms.Button Clear;
         private System.Windows.Forms.PictureBox picture;
         private System.Windows.Forms.Label label1;
