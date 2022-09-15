@@ -17,15 +17,24 @@ namespace CarReportSystem
 {
     public partial class Form1 : Form
     {
-        BindingList<CarReport> listCarReport = new BindingList<CarReport>();
         Settings settings = Settings.getInstance();
 
         public Form1()
         {
             InitializeComponent();
-
         }
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e) {}
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e) 
+        {
+            using (var writer = XmlWriter.Create("setting.xml"))
+            {
+                var serializer = new XmlSerializer(settings.GetType());
+                serializer.Serialize(writer, settings);
+            }
+        }
+
+
+
         private void MakerGroupCheck(int getIndex) {}
 
         private CarReport.MakerGroup GetCheckBoxMakerGroup()
@@ -58,45 +67,37 @@ namespace CarReportSystem
             return CarReport.MakerGroup.その他;
         }
 
-
-
         //コンボボックスに記録者を登録する
-        private void setAuther()
+        private void setAuther(string company)
         {
-            if (!auther.Items.Contains(auther.Text))
+            if (!auther.Items.Contains(company))
             {
                 //登録されていなければ登録処理
-                auther.Items.Add(auther.Text);
+                auther.Items.Add(company);
             }
         }
 
         //コンボボックスに車名を登録する
-        private void setcarname()
+        private void setCarName(string carname)
         {
-            if (!carName.Items.Contains(carName.Text))
+            if (!carName.Items.Contains(carname))
             {
                 //登録されていなければ登録処理
-                carName.Items.Add(carName.Text);
+                carName.Items.Add(carname);
             }
         }
 
         //接続時、コンボボックスに追加
-        private void ConnectCombBox()
+        private void ConnectComboBox()
         {
-            //記録者
-            if (!auther.Items.Contains(carReportDBDataGridView.SelectedRows[0]))
+            for (int i = 0; i < carReportDBDataGridView.Rows.Count; i++)
             {
-                auther.Items.Add(carReportDBDataGridView.SelectedRows[0]);
-            }
-
-            //車名
-            if (!auther.Items.Contains(carReportDBDataGridView.SelectedRows[0]))
-            {
-                auther.Items.Add(carReportDBDataGridView.SelectedRows[0]);
+                setAuther(carReportDBDataGridView.Rows[i].Cells[2].Value.ToString());
+                setCarName(carReportDBDataGridView.Rows[i].Cells[4].Value.ToString());
             }
         }
 
-        private void radioBttonAllClear()
+        private void radioBottonAllClear()
         {
             toyota.Checked = false;
             nissan.Checked = false;
@@ -106,18 +107,15 @@ namespace CarReportSystem
             other.Checked = false;
         }
 
-        private void rbChecked()
-        {
-            toyota.Checked = nissan.Checked = honda.Checked = subaru.Checked = foreignCar.Checked = other.Checked = listCarReport.Count() > 0 ? true : false;
-        }
-
         //エラー回避
         private void carReportDBDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e) { }
 
         private void Exit_Click(object sender, EventArgs e) { Application.Exit(); }
 
         private void Form1_Load(object sender, EventArgs e)
-        { 
+        {
+            EnabledCheck();
+
             try
             {
                 //逆シリアル化
@@ -149,6 +147,8 @@ namespace CarReportSystem
             carReportDBDataGridView.CurrentRow.Cells[5].Value = report.Text;
             carReportDBDataGridView.CurrentRow.Cells[6].Value = picture.Image;
 
+            setAuther(auther.Text);
+            setCarName(carName.Text);
 
             this.Validate();
             this.carReportDBBindingSource.EndEdit();
@@ -162,7 +162,9 @@ namespace CarReportSystem
             // TODO: このコード行はデータを 'infosys202215DataSet.CarReportDB' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportDBTableAdapter.Fill(this.infosys202215DataSet.CarReportDB);
 
-            ConnectCombBox();
+            ConnectComboBox();
+
+            EnabledCheck();
         }
 
         private void carReportDBBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -188,8 +190,8 @@ namespace CarReportSystem
             //データベース更新
             this.carReportDBTableAdapter.Update(this.infosys202215DataSet.CarReportDB);
 
-            setAuther();
-            setcarname();
+            setAuther(auther.Text);
+            setCarName(carName.Text);
         }
 
         private void PictureOpen_Click(object sender, EventArgs e)
@@ -211,7 +213,7 @@ namespace CarReportSystem
         {
             dateTimePicker.Text = null;
             auther.Text = null;
-            radioBttonAllClear();
+            radioBottonAllClear();
             carName.Text = null;
             report.Text = null;
             picture.Image = null;
@@ -268,7 +270,7 @@ namespace CarReportSystem
 
         private void carReportDBDataGridView_Click(object sender, EventArgs e)
         {
-            radioBttonAllClear();
+            radioBottonAllClear();
 
             dateTimePicker.Text = carReportDBDataGridView.CurrentRow.Cells[1].Value.ToString();
             auther.Text = carReportDBDataGridView.CurrentRow.Cells[2].Value.ToString();
@@ -289,6 +291,44 @@ namespace CarReportSystem
         private void btSerch_Click(object sender, EventArgs e)
         {
             carReportDBTableAdapter.FillByName(infosys202215DataSet.CarReportDB, tbSerch.Text);
+        }
+
+        private void btDeleat_Click(object sender, EventArgs e)
+        {
+            DataGridViewSelectedRowCollection src = carReportDBDataGridView.SelectedRows;
+            for (int i = src.Count - 1; i >= 0; i--)
+            {
+                carReportDBDataGridView.Rows.RemoveAt(src[i].Index);
+            }
+
+            this.Validate();
+            this.carReportDBBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202215DataSet);
+        }
+
+        private void EnabledCheck()
+        {
+            btDeleat.Enabled = btAdd.Enabled = carReportDBDataGridView.Rows.Count > 0 ? true : false;
+        }
+
+        //終了ボタン
+        private void btEnd_Click(object sender, EventArgs e){Application.Exit();}
+
+        private void btUpdate_Click(object sender, EventArgs e)
+        {
+            carReportDBDataGridView.CurrentRow.Cells[1].Value = dateTimePicker.Text;
+            carReportDBDataGridView.CurrentRow.Cells[2].Value = auther.Text;
+            carReportDBDataGridView.CurrentRow.Cells[3].Value = GetCheckBoxMakerGroup();
+            carReportDBDataGridView.CurrentRow.Cells[4].Value = carName.Text;
+            carReportDBDataGridView.CurrentRow.Cells[5].Value = report.Text;
+            carReportDBDataGridView.CurrentRow.Cells[6].Value = picture.Image;
+
+            setAuther(auther.Text);
+            setCarName(carName.Text);
+
+            this.Validate();
+            this.carReportDBBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202215DataSet);
         }
     }
 }
