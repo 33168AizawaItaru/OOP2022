@@ -12,6 +12,11 @@ namespace Chapter15 {
         public override string ToString() {
             return $"Id:{Id}, カテゴリ名:{Name}";
         }
+
+        public static implicit operator Category(List<Category> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class Book {
