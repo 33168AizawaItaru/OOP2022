@@ -25,29 +25,36 @@ namespace Chapter15
             Console.WriteLine("昇順：1 or 降順：2");
             var line = int.Parse(Console.ReadLine());
 
-            if (line == 1)
+            if (line == 1)//昇順
             {
                 foreach (var year in books.OrderBy(b=>b.PublishedYear))
                 {Console.WriteLine(year);}
-            }else if(line == 2)
+            }else if(line == 2)//降順
             {
                 foreach (var year in books.OrderByDescending(b => b.PublishedYear))
                 {Console.WriteLine(year);}
             }
             Console.WriteLine();
 
-            var groups = Library.Books.Where(b => years.Contains(b.PublishedYear)).GroupBy(b=>b.PublishedYear).OrderBy(b=>b.Key);
-            
+            var selected = Library.Books.Where(b => years.Contains(b.PublishedYear))
+                                        .Join(Library.Categories, book => book.CategoryId,
+                                                                 category => category.Id,
+                                                                 (book, category) => new
+                                                                 {
+                                                                     Title = book.Title,
+                                                                     Category = category.Name,
+                                                                     PublishedYear = book.PublishedYear,
+                                                                     Price = book.Price
+                                                                 }
+                                        );
 
-            foreach (var group in groups)
+            foreach (var book in selected.OrderByDescending(b => b.PublishedYear).ThenBy(x => x.Category))
             {
-                Console.WriteLine($"{group.Key}年");
-                foreach (var book in group)
-                {
-                    var category = Library.Categories.Where(b => b.Id == book.CategoryId).First();
-                    Console.WriteLine("　タイトル：{0},　価格：{1},　カテゴリ：{2}",book.Title,book.Price,category.Name);
-                }
+                
+                Console.WriteLine("タイトル：{0},　出版年：{1},　カテゴリ：{2},　価格：{3}", book.Title, book.PublishedYear, book.Category,book.Price);
+
             }
+            Console.WriteLine("金額の合計：{0}",selected.Sum(b=>b.Price));
         }
     }
 }
