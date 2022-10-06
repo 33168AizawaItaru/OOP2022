@@ -29,17 +29,26 @@ namespace Exercise1
 
         private static void Exercise1_2()
         {
-            
+            var books = Library.Books.Where(b=>b.Price == Library.Books.Max(x=>x.Price));
+
+            foreach (var book in books)
+            {
+                Console.WriteLine($"出版年：{book.PublishedYear},カテゴリ：{book.CategoryId},価格：{book.Price},タイトル：{book.Title}");
+            }
         }
 
         private static void Exercise1_3()
         {
-
+            var books = Library.Books.GroupBy(b=>b.PublishedYear).OrderBy(b=>b.Key);
+            foreach (var g in books)
+            {
+                Console.WriteLine($"{g.Key}年 {g.Count()}");               
+            }
         }
 
         private static void Exercise1_4()
         {
-
+            
         }
 
         private static void Exercise1_5()
