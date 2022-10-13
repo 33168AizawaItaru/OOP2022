@@ -40,18 +40,28 @@ namespace Exercise1
         private static void Exercise1_3()
         {
             var books = Library.Books.GroupBy(b=>b.PublishedYear).OrderBy(b=>b.Key);
-            foreach (var g in books)
+            foreach (var book in books)
             {
-                Console.WriteLine($"{g.Key}年 {g.Count()}");               
+                Console.WriteLine($"{book.Key}年 {book.Count()}冊");               
             }
         }
 
         private static void Exercise1_4()
         {
-            var books = Library.Books.OrderByDescending(b => b.PublishedYear).ThenByDescending(x => x.Price);
+            var books = Library.Books.OrderByDescending(b => b.PublishedYear)
+                                     .ThenByDescending(x => x.Price)
+                                     .Join(Library.Categories, book => book.CategoryId,
+                                                               category => category.Id,
+                                                               (book, category) => new
+                                                               {
+                                                                   Title = book.Title,
+                                                                   Category = category.Name,
+                                                                   PublishedYear = book.PublishedYear,
+                                                                   Price = book.Price
+                                                               });
             foreach (var book in books)
             {
-                Console.WriteLine($"{book.PublishedYear} {book.Price} {book.Title}");
+                Console.WriteLine($"{book.PublishedYear}年 {book.Price}円 {book.Title} ({book.Category})");
             }
         }
 
@@ -65,7 +75,8 @@ namespace Exercise1
                                                                    Category = category.Name,
                                                                })
                                      .Select(b => b.Category)
-                                     .Distinct().OrderBy(b => b);
+                                     .Distinct()
+                                     .OrderBy(b => b);
 
             foreach (var book in books)
             {
@@ -82,7 +93,8 @@ namespace Exercise1
                                                                    Title = book.Title,
                                                                    Category = category.Name,
                                                                })
-                                     .GroupBy(b=>b.Category).OrderBy(b=>b.Key);
+                                     .GroupBy(b=>b.Category)
+                                     .OrderBy(b=>b.Key);
             foreach (var g in books)
             {
                 Console.WriteLine($"#{g.Key}");
@@ -104,10 +116,11 @@ namespace Exercise1
                                                                    PublishedYear = book.PublishedYear,
                                                                })
                                      .Where(b=>b.Category == "Development")
-                                     .GroupBy(b => b.PublishedYear).OrderBy(b => b.Key);
+                                     .GroupBy(b => b.PublishedYear)
+                                     .OrderBy(b => b.Key);
             foreach (var g in books)
             {
-                Console.WriteLine($"#{g.Key}");
+                Console.WriteLine($"#{g.Key}年");
                 foreach (var book in g)
                 {
                     Console.WriteLine($"　{book.Title}");
@@ -117,17 +130,17 @@ namespace Exercise1
 
         private static void Exercise1_8()
         {
-            var books = Library.Categories.GroupJoin(Library.Books, c => c.Id,
-                                                                    b => b.CategoryId,
-                                                                    (c, b) => new
+            var books = Library.Categories.GroupJoin(Library.Books, category => category.Id,
+                                                                    book => book.CategoryId,
+                                                                    (category, book) => new
                                                                     {
-                                                                        Category = c.Name,
-                                                                        Count = b.Count()
+                                                                        CategoryName = category.Name,
+                                                                        Count = book.Count()
                                                                     })
                                           .Where(b=>b.Count >= 4);
             foreach (var book in books)
             {
-                Console.WriteLine($"カテゴリ：{book.Category}");
+                Console.WriteLine($"{book.CategoryName}");
             }
         }                                           
     }
