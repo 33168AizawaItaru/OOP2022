@@ -24,5 +24,28 @@ namespace CollarChecker
         {
             InitializeComponent();
         }
+
+        private void Slider1_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            getColor();
+        }
+
+        private void Slider2_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            getColor();
+        }
+
+        private void Slider3_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            getColor();
+        }
+
+        private void getColor()
+        {
+            var rCol = Slider1.Value;
+            var gCol = Slider2.Value;
+            var bCol = Slider3.Value;
+            label.Background = new SolidColorBrush(Color.FromRgb((byte)rCol, (byte)gCol, (byte)bCol));
+        }
     }
 }

@@ -14,7 +14,7 @@
             <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Column="0" Margin="10" Height="200"/>
+        <Label x:Name="label" Grid.Column="0" Margin="10" Height="200"/>
 
         <StackPanel Grid.Column="1" VerticalAlignment="Center">
             <TextBlock Text="R" FontSize="15" Margin="10" HorizontalAlignment="Center"/>
@@ -24,17 +24,17 @@
 
         <StackPanel Grid.Column="3" VerticalAlignment="Center">
             <TextBox Text="{Binding ElementName=Slider1, Path=Value, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:0}}"
-                     Margin="10"/>
+                     Margin="10" x:Name="textBox1"/>
             <TextBox Text="{Binding ElementName=Slider2, Path=Value, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:0}}"
-                     Margin="10"/>
+                     Margin="10" x:Name="textBox2"/>
             <TextBox Text="{Binding ElementName=Slider3, Path=Value, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:0}}"
-                     Margin="10"/>
+                     Margin="10" x:Name="textBox3"/>
         </StackPanel>
 
         <StackPanel Grid.Column="2" VerticalAlignment="Center">
             <Slider x:Name="Slider1" Margin="10" Minimum="0" Maximum="255" ValueChanged="Slider1_ValueChanged"/>
-            <Slider x:Name="Slider2" Margin="10" Minimum="0" Maximum="255"/>
-            <Slider x:Name="Slider3" Margin="10" Minimum="0" Maximum="255"/>
+            <Slider x:Name="Slider2" Margin="10" Minimum="0" Maximum="255" ValueChanged="Slider2_ValueChanged"/>
+            <Slider x:Name="Slider3" Margin="10" Minimum="0" Maximum="255" ValueChanged="Slider3_ValueChanged"/>
         </StackPanel>
     </Grid>
 </Window>
