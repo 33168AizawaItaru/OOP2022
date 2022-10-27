@@ -27,27 +27,15 @@ namespace CollarChecker
             DataContext = GetColorList();
         }
 
-        private void Slider1_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             getColor();
-        }
-
-        private void Slider2_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            getColor();
-        }
-
-        private void Slider3_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            getColor();
+            //comboBox.SelectedIndex = -1;
         }
 
         private void getColor()
         {
-            var r = Slider1.Value;
-            var g = Slider2.Value;
-            var b = Slider3.Value;
-            label.Background = new SolidColorBrush(Color.FromRgb((byte)r, (byte)g, (byte)b));
+            label.Background = new SolidColorBrush(Color.FromRgb((byte)Slider1.Value, (byte)Slider2.Value, (byte)Slider3.Value));
         }
 
         /// <summary>
@@ -69,11 +57,6 @@ namespace CollarChecker
             public string Name { get; set; }
         }
 
-        private void Border_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var mycolor = (MyColor)((ComboBox)sender).SelectedItem;
@@ -82,13 +65,30 @@ namespace CollarChecker
 
             label.Background = new SolidColorBrush(color);
 
-            var R = color.R;
-            var G = color.G;
-            var B = color.B;
+            Slider1.Value = color.R;
+            Slider2.Value = color.G;
+            Slider3.Value = color.B;
+        }
 
-            Slider1.Value = R;
-            Slider2.Value = G;
-            Slider3.Value = B;
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            getColor();
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            var saveColors = "R：" + rText.Text + "　G：" + gText.Text + "　B：" + bText.Text;
+            colorInfo.Items.Add(saveColors);
+        }
+
+        private void colorInfo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var colors = colorInfo.SelectedItem;
+            string[] color = colors.ToString().Split('　');
+
+            rText.Text = color[0].Substring(2);
+            gText.Text = color[1].Substring(2);
+            bText.Text = color[2].Substring(2);
         }
     }
 }

@@ -5,16 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CollarChecker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="500">
+        Title="MainWindow" Height="300" Width="700" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200*"/>
             <ColumnDefinition Width="40"/>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
 
-        <Label x:Name="label" Grid.Column="0" Margin="10" Height="200" Background="AliceBlue"/>
+        <Label x:Name="label" Grid.Column="0" Margin="10" Height="200"/>
+
+        <Button x:Name="Save" Content="保存" FontFamily="mintyo" Grid.Column="3"
+                Height="24" Width="30" Margin="10,0,10,20"
+                VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="Save_Click"/>
+
+        <ListBox x:Name="colorInfo" Grid.Column="4" Height="150" Width="150" Margin="10"
+                 HorizontalAlignment="Center" VerticalAlignment="Center" SelectionChanged="colorInfo_SelectionChanged"/>
 
         <StackPanel Grid.Column="1" VerticalAlignment="Center">
             <TextBlock Text="R" FontSize="15" Margin="10" HorizontalAlignment="Center"/>
@@ -23,25 +31,28 @@
         </StackPanel>
 
         <StackPanel Grid.Column="3" VerticalAlignment="Center">
-            <TextBox Text="{Binding ElementName=Slider1, Path=Value, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:0}}"
-                     Margin="10" x:Name="textBox1"/>
-            <TextBox Text="{Binding ElementName=Slider2, Path=Value, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:0}}"
-                     Margin="10" x:Name="textBox2"/>
-            <TextBox Text="{Binding ElementName=Slider3, Path=Value, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:0}}"
-                     Margin="10" x:Name="textBox3"/>
+            <TextBox x:Name="rText" Text="{Binding ElementName=Slider1, Path=Value, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:0}}"
+                     Margin="10"/>
+            <TextBox x:Name="gText" Text="{Binding ElementName=Slider2, Path=Value, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:0}}"
+                     Margin="10"/>
+            <TextBox x:Name="bText" Text="{Binding ElementName=Slider3, Path=Value, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:0}}"
+                     Margin="10"/>
         </StackPanel>
 
         <StackPanel Grid.Column="2" VerticalAlignment="Center">
-            <Slider x:Name="Slider1" Margin="10" Minimum="0" Maximum="255" ValueChanged="Slider1_ValueChanged"/>
-            <Slider x:Name="Slider2" Margin="10" Minimum="0" Maximum="255" ValueChanged="Slider2_ValueChanged"/>
-            <Slider x:Name="Slider3" Margin="10" Minimum="0" Maximum="255" ValueChanged="Slider3_ValueChanged"/>
+            <Slider x:Name="Slider1" Margin="10" Minimum="0" Maximum="255"
+                    ValueChanged="Slider_ValueChanged" TickPlacement="TopLeft" TickFrequency="50"/>
+            <Slider x:Name="Slider2" Margin="10" Minimum="0" Maximum="255" 
+                    ValueChanged="Slider_ValueChanged" TickPlacement="TopLeft" TickFrequency="50"/>
+            <Slider x:Name="Slider3" Margin="10" Minimum="0" Maximum="255" 
+                    ValueChanged="Slider_ValueChanged" TickPlacement="TopLeft" TickFrequency="50"/>
         </StackPanel>
 
-        <ComboBox Grid.Column="2" ItemsSource="{Binding}" SelectedValue="{Binding Color}" Margin="20" Height="24" VerticalAlignment="Bottom" VerticalContentAlignment="Center" HorizontalAlignment="Center" Width="155" SelectionChanged="ComboBox_SelectionChanged">
+        <ComboBox x:Name="comboBox" Grid.Column="2" ItemsSource="{Binding}" SelectedValue="{Binding Color}" Margin="20" Height="24" VerticalAlignment="Bottom" VerticalContentAlignment="Center" HorizontalAlignment="Center" Width="155" SelectionChanged="ComboBox_SelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <Border Width="20" Height="Auto" Margin="5,0" BorderThickness="1" BorderBrush="Black" Loaded="Border_Loaded"  >
+                        <Border Width="20" Height="Auto" Margin="5,0" BorderThickness="1" BorderBrush="Black">
                             <Border.Background>
                                 <SolidColorBrush Color="{Binding Color}"/>
                             </Border.Background>
@@ -51,5 +62,6 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
+        
     </Grid>
 </Window>
