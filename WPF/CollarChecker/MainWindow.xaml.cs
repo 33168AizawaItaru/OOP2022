@@ -21,6 +21,8 @@ namespace CollarChecker
     /// </summary>
     public partial class MainWindow : Window
     {
+        MyColor mycolor = new MyColor();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -30,7 +32,6 @@ namespace CollarChecker
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             getColor();
-            //comboBox.SelectedIndex = -1;
         }
 
         private void getColor()
@@ -59,7 +60,7 @@ namespace CollarChecker
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var mycolor = (MyColor)((ComboBox)sender).SelectedItem;
+            mycolor = (MyColor)((ComboBox)sender).SelectedItem;
             var color = mycolor.Color;
             var name = mycolor.Name;
 
@@ -78,7 +79,26 @@ namespace CollarChecker
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             var saveColors = "R：" + rText.Text + "　G：" + gText.Text + "　B：" + bText.Text;
-            colorInfo.Items.Add(saveColors);
+
+            var colorName = ((IEnumerable<MyColor>)DataContext)
+                                .Where(c => c.Color.R == mycolor.Color.R &&
+                                          c.Color.G == mycolor.Color.G &&
+                                          c.Color.B == mycolor.Color.B).FirstOrDefault();
+
+            //colorInfo.Items.Insert(0,colorName?.Name ?? "R：" + rText.Text + "　G：" + gText.Text + "　B：" + bText.Text);
+            
+            if (colorName != null)
+            {
+                colorInfo.Items.Add(colorName.Name);
+            } else
+            {
+                colorInfo.Items.Add(saveColors);
+            }
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            colorInfo.Items.Clear();
         }
 
         private void colorInfo_SelectionChanged(object sender, SelectionChangedEventArgs e)
