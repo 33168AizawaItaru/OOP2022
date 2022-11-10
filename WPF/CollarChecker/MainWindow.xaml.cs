@@ -22,6 +22,7 @@ namespace CollarChecker
     public partial class MainWindow : Window
     {
         MyColor mycolor = new MyColor();
+        List<MyColor> colorList = new List<MyColor>();
 
         public MainWindow()
         {
@@ -36,7 +37,11 @@ namespace CollarChecker
 
         private void getColor()
         {
-            label.Background = new SolidColorBrush(Color.FromRgb((byte)Slider1.Value, (byte)Slider2.Value, (byte)Slider3.Value));
+            var r = byte.Parse(rText.Text);
+            var g = byte.Parse(gText.Text);
+            var b = byte.Parse(bText.Text);
+            Color color = Color.FromRgb(r,g,b);
+            label.Background = new SolidColorBrush(color);
         }
 
         /// <summary>
@@ -60,55 +65,51 @@ namespace CollarChecker
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            mycolor = (MyColor)((ComboBox)sender).SelectedItem;
-            var color = mycolor.Color;
-            var name = mycolor.Name;
-
-            label.Background = new SolidColorBrush(color);
-
-            Slider1.Value = color.R;
-            Slider2.Value = color.G;
-            Slider3.Value = color.B;
+            Slider1.Value = ((MyColor)((ComboBox)sender).SelectedItem).Color.R;
+            Slider2.Value = ((MyColor)((ComboBox)sender).SelectedItem).Color.G;
+            Slider3.Value = ((MyColor)((ComboBox)sender).SelectedItem).Color.B;
+            getColor();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             getColor();
         }
-
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            var saveColors = "R：" + rText.Text + "　G：" + gText.Text + "　B：" + bText.Text;
+            var sColor = GetColorName(byte.Parse(rText.Text),byte.Parse(gText.Text),byte.Parse(bText.Text));
 
-            var colorName = ((IEnumerable<MyColor>)DataContext)
-                                .Where(c => c.Color.R == mycolor.Color.R &&
-                                          c.Color.G == mycolor.Color.G &&
-                                          c.Color.B == mycolor.Color.B).FirstOrDefault();
+            colorInfo.Items.Insert(0, sColor.Name ?? "R:" + sColor.Color.R + "　G:" + sColor.Color.G + "　B:" + sColor.Color.B);
+            colorList.Insert(0, sColor);
+        }
 
-            //colorInfo.Items.Insert(0,colorName?.Name ?? "R：" + rText.Text + "　G：" + gText.Text + "　B：" + bText.Text);
-            
-            if (colorName != null)
+        private MyColor GetColorName(byte r, byte g, byte b)
+        {
+            return new MyColor
             {
-                colorInfo.Items.Add(colorName.Name);
-            } else
-            {
-                colorInfo.Items.Add(saveColors);
-            }
+                Color = Color.FromRgb(r, g, b),
+                Name = ((IEnumerable<MyColor>)DataContext)
+                                .Where(c => c.Color.R == r &&
+                                          c.Color.G == g &&
+                                          c.Color.B == b).Select(c => c.Name).FirstOrDefault()
+            };
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            colorInfo.Items.Clear();
+            colorInfo.Items.Remove(colorInfo.SelectedItem);
         }
 
         private void colorInfo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var colors = colorInfo.SelectedItem;
-            string[] color = colors.ToString().Split('　');
-
-            rText.Text = color[0].Substring(2);
-            gText.Text = color[1].Substring(2);
-            bText.Text = color[2].Substring(2);
+            if (colorInfo.SelectedIndex != -1)
+            {
+                Slider1.Value = colorList[colorInfo.SelectedIndex].Color.R;
+                Slider2.Value = colorList[colorInfo.SelectedIndex].Color.G;
+                Slider3.Value = colorList[colorInfo.SelectedIndex].Color.B;
+            }
+            
+            getColor();
         }
     }
 }
