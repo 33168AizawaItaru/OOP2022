@@ -28,7 +28,10 @@ namespace CollarChecker
         {
             InitializeComponent();
             DataContext = GetColorList();
+            EnabledCheck();
         }
+
+        
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -81,6 +84,7 @@ namespace CollarChecker
 
             saveList.Items.Insert(0, sColor.Name ?? "R:" + sColor.Color.R + "　G:" + sColor.Color.G + "　B:" + sColor.Color.B);
             colorList.Insert(0, sColor);
+            Delete.IsEnabled = true;
         }
 
         private MyColor GetColorName(byte r, byte g, byte b)
@@ -101,6 +105,8 @@ namespace CollarChecker
 
             colorList.RemoveAt(saveList.SelectedIndex);
             saveList.Items.RemoveAt(saveList.SelectedIndex);
+
+            EnabledCheck();
         }
 
         private void colorInfo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -112,6 +118,17 @@ namespace CollarChecker
                 Slider3.Value = colorList[saveList.SelectedIndex].Color.B;
             }        
             getColor();
+        }
+
+        private void EnabledCheck()
+        {
+            if (saveList.Items.Count == 0)
+            {
+                Delete.IsEnabled = false;
+            } else
+            {
+                Delete.IsEnabled = true;
+            }
         }
     }
 }
