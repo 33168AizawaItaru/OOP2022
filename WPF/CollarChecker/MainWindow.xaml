@@ -21,7 +21,7 @@
                 Height="24" Width="30" Margin="95,0,75,20"
                 VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="Save_Click"/>
 
-        <ListBox x:Name="colorInfo" Grid.Column="4" Height="150" Width="150" Margin="10"
+        <ListBox x:Name="saveList" Grid.Column="4" Height="150" Width="150" Margin="10"
                  HorizontalAlignment="Center" VerticalAlignment="Center" SelectionChanged="colorInfo_SelectionChanged"/>
 
         <Button x:Name="Delete" Content="削除" Grid.Column="4"

@@ -79,7 +79,7 @@ namespace CollarChecker
         {
             var sColor = GetColorName(byte.Parse(rText.Text),byte.Parse(gText.Text),byte.Parse(bText.Text));
 
-            colorInfo.Items.Insert(0, sColor.Name ?? "R:" + sColor.Color.R + "　G:" + sColor.Color.G + "　B:" + sColor.Color.B);
+            saveList.Items.Insert(0, sColor.Name ?? "R:" + sColor.Color.R + "　G:" + sColor.Color.G + "　B:" + sColor.Color.B);
             colorList.Insert(0, sColor);
         }
 
@@ -90,25 +90,27 @@ namespace CollarChecker
                 Color = Color.FromRgb(r, g, b),
                 Name = ((IEnumerable<MyColor>)DataContext)
                                 .Where(c => c.Color.R == r &&
-                                          c.Color.G == g &&
-                                          c.Color.B == b).Select(c => c.Name).FirstOrDefault()
+                                            c.Color.G == g &&
+                                            c.Color.B == b).Select(c => c.Name).FirstOrDefault()
             };
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            colorInfo.Items.Remove(colorInfo.SelectedItem);
+            if (saveList.SelectedIndex == -1)return;
+
+            colorList.RemoveAt(saveList.SelectedIndex);
+            saveList.Items.RemoveAt(saveList.SelectedIndex);
         }
 
         private void colorInfo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (colorInfo.SelectedIndex != -1)
+            if (saveList.SelectedIndex != -1)
             {
-                Slider1.Value = colorList[colorInfo.SelectedIndex].Color.R;
-                Slider2.Value = colorList[colorInfo.SelectedIndex].Color.G;
-                Slider3.Value = colorList[colorInfo.SelectedIndex].Color.B;
-            }
-            
+                Slider1.Value = colorList[saveList.SelectedIndex].Color.R;
+                Slider2.Value = colorList[saveList.SelectedIndex].Color.G;
+                Slider3.Value = colorList[saveList.SelectedIndex].Color.B;
+            }        
             getColor();
         }
     }
