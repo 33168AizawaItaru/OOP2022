@@ -31,7 +31,7 @@ namespace WeatherApp
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.WeatherInfo = new System.Windows.Forms.TextBox();
-            this.picture = new System.Windows.Forms.PictureBox();
+            this.Picture = new System.Windows.Forms.PictureBox();
             this.hokkaido = new System.Windows.Forms.Button();
             this.tohoku = new System.Windows.Forms.Button();
             this.kantokosinetu = new System.Windows.Forms.Button();
@@ -43,7 +43,18 @@ namespace WeatherApp
             this.kyusyu = new System.Windows.Forms.Button();
             this.tyugoku = new System.Windows.Forms.Button();
             this.PrefectureList = new System.Windows.Forms.ListBox();
-            ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
+            this.today = new System.Windows.Forms.PictureBox();
+            this.tomorrow = new System.Windows.Forms.PictureBox();
+            this.dayAfterTomorrow = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.Picture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.today)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tomorrow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dayAfterTomorrow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // WeatherInfo
@@ -53,19 +64,19 @@ namespace WeatherApp
             this.WeatherInfo.Multiline = true;
             this.WeatherInfo.Name = "WeatherInfo";
             this.WeatherInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.WeatherInfo.Size = new System.Drawing.Size(714, 139);
+            this.WeatherInfo.Size = new System.Drawing.Size(707, 139);
             this.WeatherInfo.TabIndex = 0;
             // 
-            // picture
+            // Picture
             // 
-            this.picture.BackColor = System.Drawing.Color.Transparent;
-            this.picture.Image = ((System.Drawing.Image)(resources.GetObject("picture.Image")));
-            this.picture.Location = new System.Drawing.Point(60, 35);
-            this.picture.Name = "picture";
-            this.picture.Size = new System.Drawing.Size(571, 471);
-            this.picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picture.TabIndex = 3;
-            this.picture.TabStop = false;
+            this.Picture.BackColor = System.Drawing.Color.Transparent;
+            this.Picture.Image = ((System.Drawing.Image)(resources.GetObject("Picture.Image")));
+            this.Picture.Location = new System.Drawing.Point(60, 35);
+            this.Picture.Name = "Picture";
+            this.Picture.Size = new System.Drawing.Size(571, 471);
+            this.Picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Picture.TabIndex = 3;
+            this.Picture.TabStop = false;
             // 
             // hokkaido
             // 
@@ -189,14 +200,89 @@ namespace WeatherApp
             // 
             // PrefectureList
             // 
-            this.PrefectureList.Font = new System.Drawing.Font("ＭＳ 明朝", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.PrefectureList.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.PrefectureList.Font = new System.Drawing.Font("ＭＳ 明朝", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.PrefectureList.FormattingEnabled = true;
             this.PrefectureList.ItemHeight = 16;
-            this.PrefectureList.Location = new System.Drawing.Point(671, 310);
+            this.PrefectureList.Location = new System.Drawing.Point(669, 35);
             this.PrefectureList.Name = "PrefectureList";
             this.PrefectureList.Size = new System.Drawing.Size(235, 196);
             this.PrefectureList.TabIndex = 5;
             this.PrefectureList.SelectedIndexChanged += new System.EventHandler(this.PrefectureList_SelectedIndexChanged);
+            // 
+            // today
+            // 
+            this.today.BackColor = System.Drawing.Color.Transparent;
+            this.today.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.today.Location = new System.Drawing.Point(550, 406);
+            this.today.Name = "today";
+            this.today.Size = new System.Drawing.Size(100, 100);
+            this.today.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.today.TabIndex = 6;
+            this.today.TabStop = false;
+            // 
+            // tomorrow
+            // 
+            this.tomorrow.BackColor = System.Drawing.Color.Transparent;
+            this.tomorrow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tomorrow.Location = new System.Drawing.Point(677, 406);
+            this.tomorrow.Name = "tomorrow";
+            this.tomorrow.Size = new System.Drawing.Size(100, 100);
+            this.tomorrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.tomorrow.TabIndex = 6;
+            this.tomorrow.TabStop = false;
+            // 
+            // dayAfterTomorrow
+            // 
+            this.dayAfterTomorrow.BackColor = System.Drawing.Color.Transparent;
+            this.dayAfterTomorrow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.dayAfterTomorrow.Location = new System.Drawing.Point(804, 406);
+            this.dayAfterTomorrow.Name = "dayAfterTomorrow";
+            this.dayAfterTomorrow.Size = new System.Drawing.Size(100, 100);
+            this.dayAfterTomorrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.dayAfterTomorrow.TabIndex = 6;
+            this.dayAfterTomorrow.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("HG創英角ﾎﾟｯﾌﾟ体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label1.Location = new System.Drawing.Point(550, 386);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 20);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "今日";
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("HG創英角ﾎﾟｯﾌﾟ体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label2.Location = new System.Drawing.Point(677, 386);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 20);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "明日";
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("HG創英角ﾎﾟｯﾌﾟ体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label3.Location = new System.Drawing.Point(804, 386);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 20);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "明後日";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(773, 521);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(153, 139);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
@@ -204,7 +290,14 @@ namespace WeatherApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(938, 663);
+            this.ClientSize = new System.Drawing.Size(938, 666);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dayAfterTomorrow);
+            this.Controls.Add(this.tomorrow);
+            this.Controls.Add(this.today);
             this.Controls.Add(this.PrefectureList);
             this.Controls.Add(this.kyusyu);
             this.Controls.Add(this.okinawa);
@@ -216,12 +309,16 @@ namespace WeatherApp
             this.Controls.Add(this.kantokosinetu);
             this.Controls.Add(this.tohoku);
             this.Controls.Add(this.hokkaido);
-            this.Controls.Add(this.picture);
+            this.Controls.Add(this.Picture);
             this.Controls.Add(this.WeatherInfo);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "Form1";
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
+            this.Text = "三日間の天気予報";
+            ((System.ComponentModel.ISupportInitialize)(this.Picture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.today)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tomorrow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dayAfterTomorrow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,7 +327,7 @@ namespace WeatherApp
         #endregion
 
         private System.Windows.Forms.TextBox WeatherInfo;
-        private System.Windows.Forms.PictureBox picture;
+        private System.Windows.Forms.PictureBox Picture;
         private System.Windows.Forms.Button hokkaido;
         private System.Windows.Forms.Button tohoku;
         private System.Windows.Forms.Button kantokosinetu;
@@ -242,6 +339,13 @@ namespace WeatherApp
         private System.Windows.Forms.Button kyusyu;
         private System.Windows.Forms.Button tyugoku;
         private System.Windows.Forms.ListBox PrefectureList;
+        private System.Windows.Forms.PictureBox today;
+        private System.Windows.Forms.PictureBox tomorrow;
+        private System.Windows.Forms.PictureBox dayAfterTomorrow;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
