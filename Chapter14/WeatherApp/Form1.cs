@@ -389,31 +389,43 @@ namespace WeatherApp
 
         private void getInfo(Class1[] json)
         {
-            try
-            {} catch (System.Net.WebException)
-            {
-                throw;
-            }
-
             WeatherInfo.Text += json[0].publishingOffice;
             WeatherInfo.Text += Environment.NewLine;
             WeatherInfo.Text += json[0].reportDatetime;
             WeatherInfo.Text += Environment.NewLine;
             WeatherInfo.Text += json[0].timeSeries[0].areas[0].area.name;
             WeatherInfo.Text += Environment.NewLine;
-            WeatherInfo.Text += "今日の天気: " + json[0].timeSeries[0].areas[0].weathers[0];
-            WeatherInfo.Text += Environment.NewLine;
-            WeatherInfo.Text += "明日の天気: " + json[0].timeSeries[0].areas[0].weathers[1];
-            WeatherInfo.Text += Environment.NewLine;
-            WeatherInfo.Text += "明後日の天気: " + json[0].timeSeries[0].areas[0].weathers[2];
+            try
+            {
+                WeatherInfo.Text += "今日の天気: " + json[0].timeSeries[0].areas[0].weathers[0];
+                WeatherInfo.Text += Environment.NewLine;
+                WeatherInfo.Text += "明日の天気: " + json[0].timeSeries[0].areas[0].weathers[1];
+                WeatherInfo.Text += Environment.NewLine;
+                WeatherInfo.Text += "明後日の天気: " + json[0].timeSeries[0].areas[0].weathers[2];
+            } catch (System.IndexOutOfRangeException)
+            {}
+            try
+            {
+                today.ImageLocation = @"https://www.jma.go.jp/bosai/forecast/img/" + json[0].timeSeries[0].areas[0].weatherCodes[0] + ".png";
+                tomorrow.ImageLocation = @"https://www.jma.go.jp/bosai/forecast/img/" + json[0].timeSeries[0].areas[0].weatherCodes[1] + ".png";
+                dayAfterTomorrow.ImageLocation = @"https://www.jma.go.jp/bosai/forecast/img/" + json[0].timeSeries[0].areas[0].weatherCodes[2] + ".png";
+            } catch (Exception)
+            {}
             WeatherInfo.Text += Environment.NewLine;
             WeatherInfo.Text += "平均最低気温: " + json[1].tempAverage.areas[0].min + "　平均最高気温: " + json[1].tempAverage.areas[0].max;
             WeatherInfo.Text += Environment.NewLine;
             WeatherInfo.Text += "平均最低降水量: " + json[1].precipAverage.areas[0].min + "　平均最高降水量: " + json[1].precipAverage.areas[0].max;
+        }
 
-            today.ImageLocation = @"https://www.jma.go.jp/bosai/forecast/img/" + json[0].timeSeries[0].areas[0].weatherCodes[0] + ".png";
-            tomorrow.ImageLocation = @"https://www.jma.go.jp/bosai/forecast/img/" + json[0].timeSeries[0].areas[0].weatherCodes[1] + ".png";
-            dayAfterTomorrow.ImageLocation = @"https://www.jma.go.jp/bosai/forecast/img/" + json[0].timeSeries[0].areas[0].weatherCodes[2] + ".png";
+        private void DString()
+        {
+
+            try
+            {
+
+            } catch (System.Net.WebException)
+            {
+            }
         }
 
         private void hokkaido_Click(object sender, EventArgs e)
