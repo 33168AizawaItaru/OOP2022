@@ -59,7 +59,7 @@ namespace WeatherApp
             // 
             // WeatherInfo
             // 
-            this.WeatherInfo.Font = new System.Drawing.Font("ＭＳ 明朝", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.WeatherInfo.Font = new System.Drawing.Font("ＭＳ ゴシック", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.WeatherInfo.Location = new System.Drawing.Point(60, 521);
             this.WeatherInfo.Multiline = true;
             this.WeatherInfo.Name = "WeatherInfo";
@@ -94,7 +94,7 @@ namespace WeatherApp
             // 
             this.tohoku.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tohoku.Font = new System.Drawing.Font("ＭＳ 明朝", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tohoku.Location = new System.Drawing.Point(451, 256);
+            this.tohoku.Location = new System.Drawing.Point(457, 230);
             this.tohoku.Name = "tohoku";
             this.tohoku.Size = new System.Drawing.Size(86, 26);
             this.tohoku.TabIndex = 4;
@@ -214,7 +214,7 @@ namespace WeatherApp
             // 
             this.today.BackColor = System.Drawing.Color.Transparent;
             this.today.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.today.Location = new System.Drawing.Point(550, 406);
+            this.today.Location = new System.Drawing.Point(592, 406);
             this.today.Name = "today";
             this.today.Size = new System.Drawing.Size(100, 100);
             this.today.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -225,7 +225,7 @@ namespace WeatherApp
             // 
             this.tomorrow.BackColor = System.Drawing.Color.Transparent;
             this.tomorrow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tomorrow.Location = new System.Drawing.Point(677, 406);
+            this.tomorrow.Location = new System.Drawing.Point(698, 406);
             this.tomorrow.Name = "tomorrow";
             this.tomorrow.Size = new System.Drawing.Size(100, 100);
             this.tomorrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -247,7 +247,7 @@ namespace WeatherApp
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("HG創英角ﾎﾟｯﾌﾟ体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(550, 386);
+            this.label1.Location = new System.Drawing.Point(589, 386);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 20);
             this.label1.TabIndex = 8;
@@ -257,7 +257,7 @@ namespace WeatherApp
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("HG創英角ﾎﾟｯﾌﾟ体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(677, 386);
+            this.label2.Location = new System.Drawing.Point(698, 386);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 20);
             this.label2.TabIndex = 8;
