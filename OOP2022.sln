@@ -145,6 +145,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chooseDay", "Test\chooseDay
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavigationServiceSample", "NavigationServiceSample\NavigationServiceSample\NavigationServiceSample.csproj", "{8157DBF9-77AE-4B29-A8E2-B74206E6A6DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfImageSample", "WpfImageSample\WpfImageSample\WpfImageSample.csproj", "{F50C51E7-5CF6-4DF2-B86F-A1A597F614AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -355,6 +357,10 @@ Global
 		{8157DBF9-77AE-4B29-A8E2-B74206E6A6DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8157DBF9-77AE-4B29-A8E2-B74206E6A6DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8157DBF9-77AE-4B29-A8E2-B74206E6A6DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F50C51E7-5CF6-4DF2-B86F-A1A597F614AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F50C51E7-5CF6-4DF2-B86F-A1A597F614AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F50C51E7-5CF6-4DF2-B86F-A1A597F614AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F50C51E7-5CF6-4DF2-B86F-A1A597F614AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -413,6 +419,7 @@ Global
 		{E0076DB4-57A4-4DC9-BC2C-DF7A97FADB24} = {513C9DA8-3AE3-4C32-AAB2-6F8D4163C103}
 		{0D21E387-78B5-44F1-9516-193D166AF6D0} = {06D8CEE3-9827-4694-9300-83D1783DEF84}
 		{8157DBF9-77AE-4B29-A8E2-B74206E6A6DF} = {06D8CEE3-9827-4694-9300-83D1783DEF84}
+		{F50C51E7-5CF6-4DF2-B86F-A1A597F614AF} = {06D8CEE3-9827-4694-9300-83D1783DEF84}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4198BCB8-43F0-4799-9D94-2C984A2F5458}
