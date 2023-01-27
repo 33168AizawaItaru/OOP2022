@@ -65,6 +65,12 @@ namespace RssReader
         }
 
         private void btBack_Click(object sender, EventArgs e) { wvBrowser.GoBack(); }
+
+        private void lbRssTitle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void btFoward_Click(object sender, EventArgs e) { wvBrowser.GoForward(); }
     }
 }

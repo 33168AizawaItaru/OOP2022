@@ -509,5 +509,9 @@ namespace WeatherApp
             GetInfo();
         }
 
+        private void today_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

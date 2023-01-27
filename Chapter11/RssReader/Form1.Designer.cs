@@ -69,6 +69,7 @@ namespace RssReader
             this.lbRssTitle.Size = new System.Drawing.Size(233, 700);
             this.lbRssTitle.TabIndex = 2;
             this.lbRssTitle.Click += new System.EventHandler(this.lbRssTitle_Click);
+            this.lbRssTitle.SelectedIndexChanged += new System.EventHandler(this.lbRssTitle_SelectedIndexChanged);
             // 
             // btBack
             // 

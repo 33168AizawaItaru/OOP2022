@@ -220,6 +220,7 @@ namespace WeatherApp
             this.today.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.today.TabIndex = 6;
             this.today.TabStop = false;
+            this.today.Click += new System.EventHandler(this.today_Click);
             // 
             // tomorrow
             // 
